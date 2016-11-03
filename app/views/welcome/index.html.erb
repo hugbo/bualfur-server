@@ -2,9 +2,28 @@
   <h2>Here is the list!</h2>
   <div class="search">
     <p>The Search bar will be here</p>
+
+    <%= form_tag(properties_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Properties" %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
+
   </div>
   <div class="propertylist">
     <p>And the property list here</p>
+    <table>
+      <tr>
+        <th>Address</th>
+        <th>Price</th>
+      </tr>
+
+      <% @property.each do |p| %>
+        <tr>
+          <td><%= p.address%></td>
+          <td><%= p.price%></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 

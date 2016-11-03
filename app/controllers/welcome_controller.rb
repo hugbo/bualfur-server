@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  def dank
-    @meme = "memes"
+  def index
+    @property = Property.all
   end
 end

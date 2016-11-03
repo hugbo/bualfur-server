@@ -1,7 +1,12 @@
 class PropertiesController < ApplicationController
 
   def index
-
+    @properties = Property.all
+    if params[:search]
+      @properties = Property.search(params[:search]).order("created_at DESC")
+    else
+      @properties = Property.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -9,6 +14,7 @@ class PropertiesController < ApplicationController
   end
 
   def new
+
   end
 
   def edit
