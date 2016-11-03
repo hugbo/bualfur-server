@@ -1,0 +1,51 @@
+<h1>Dank Memes!</h1>
+<h2>For your health</h2>
+
+<%= form_for :property, url: properties_path do |f| %>
+
+<p>
+  <%= f.label :address %> <br>
+  <%= f.text_field :address %>
+</p>
+
+<p>
+  <%= f.label :zipcode %> <br>
+  <%= f.text_field :zipcode %>
+</p>
+
+<p>
+  <%= f.label :city %> <br>
+  <%= f.text_field :city %>
+</p>
+
+<p>
+  <%= f.label :price %> <br>
+  <%= f.text_field :price %>
+</p>
+
+<p>
+  <%= f.label :size %> <br>
+  <%= f.text_field :size %>
+</p>
+
+
+<p>
+  <%= f.label :numBedrooms, "Number of Bedrooms" %> <br>
+  <%= f.text_field :numBedrooms %>
+</p>
+
+<p>
+  <%= f.label :numBathrooms, "Number of Bathrooms" %> <br>
+  <%= f.text_field :numBathrooms %>
+</p>
+
+<p>
+  <%= f.label :propertyType, "Property Type" %> <br>
+  <%= f.text_field :propertyType %>
+</p>
+
+<p>
+  <%= f.submit  %>
+</p>
+
+<% end %>
