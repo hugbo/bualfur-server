@@ -2,7 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#map {
-  height: 400px;
+// Variables
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+
+$openSans: Open Sans, sans-serif;
+$raleway: Raleway, sans-serif;
+
+$blue: #062F4F;
+$purple: #813772;
+$embers: #882601;
+
+// General rules
+
+* {
+  font-family: $openSans;
+}
+
+div, p {
+  color: white;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $raleway;
+}
+
+.container {
+  height: 100%;
   width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+// Search container
+
+.leftContainer {
+  background-color: $blue;
+  float: left;
+  * {
+    margin: 5%;
+  }
+}
+
+// Map container
+
+.rightContainer {
+  background-color: $embers;
+  float: right;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
 }
