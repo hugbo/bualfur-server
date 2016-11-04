@@ -36,6 +36,10 @@ class PropertiesController < ApplicationController
 
   end
 
+  def getjson
+    @properties = Property.all
+  end
+
 
   private
     def property_params
