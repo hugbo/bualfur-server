@@ -36,10 +36,13 @@ class PropertiesController < ApplicationController
 
   end
 
-  def getjson
+  def search
     @properties = Property.all
-    if params[:search]
-      puts "Search parameters found"
+    @search = params[:search]
+    if @search
+      puts "Search parameters:"
+      puts @search.inspect
+      @properties = Property.search(params[:search]).order("created_at DESC")
     end
   end
 
