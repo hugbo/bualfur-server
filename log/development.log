@@ -6860,3 +6860,56 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+Started GET "/" for 127.0.0.1 at 2016-11-04 22:48:55 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mProperty Load (0.4ms)[0m  [1m[34mSELECT "properties".* FROM "properties"[0m
+  Rendered welcome/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 263ms (Views: 250.1ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-04 22:49:00 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"", "priceMin"=>"", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (1.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '%%%' AND (price BETWEEN '%0%' AND '%10000%') AND (numBedrooms BETWEEN '%0%' AND '%100%' ) AND propertyType ILIKE '%%%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (5.8ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedColumn: ERROR:  column "numbedrooms" does not exist
+LINE 1: ...%%%' AND (price BETWEEN '%0%' AND '%10000%') AND (numBedroom...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "properties.num_bedrooms".
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '%%%' AND (price BETWEEN '%0%' AND '%10000%') AND (numBedrooms BETWEEN '%0%' AND '%100%' ) AND propertyType ILIKE '%%%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder___847543614702391674_70352681278240'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.4ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (7.6ms)
+Started GET "/" for 127.0.0.1 at 2016-11-04 22:50:00 +0000
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties"[0m
+  Rendered welcome/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 41ms (Views: 32.0ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-04 22:50:02 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"", "priceMin"=>"", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '%%%' AND (price BETWEEN '%0%' AND '%10000%') AND (num_bedrooms BETWEEN '%0%' AND '%100%' ) AND property_type ILIKE '%%%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (2.7ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.6ms)
+
+
