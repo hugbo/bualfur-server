@@ -3,7 +3,7 @@
   <div class="search">
     <p>The Search bar will be here</p>
 
-    <%= form_tag(properties_path, :method => "get", id: "search-form") do %>
+    <%= form_tag(properties_getjson_path :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Properties" %>
       <%= submit_tag "Search", :name => nil %>
     <% end %>

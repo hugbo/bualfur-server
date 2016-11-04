@@ -38,6 +38,9 @@ class PropertiesController < ApplicationController
 
   def getjson
     @properties = Property.all
+    if params[:search]
+      puts "Search parameters found"
+    end
   end
 
 

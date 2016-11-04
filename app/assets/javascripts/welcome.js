@@ -1,6 +1,5 @@
 $(function(){
   console.log("ready!");
-  initMap();
 })
 
 function initMap() {
@@ -12,5 +11,20 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: uluru,
     map: map
+  });
+
+
+  $('form').submit(function() {
+      var valuesToSubmit = "3000";
+      // $(this).serialize();
+      $.ajax({
+          type: "POST",
+          url: "/properties/getjson.json", //sumbits it to the given url of the form
+          data: {search: valuesToSubmit},
+          dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+      }).success(function(json){
+          console.log("success", json);
+      });
+      return false; // prevents normal behaviour
   });
 }
