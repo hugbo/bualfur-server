@@ -1,12 +1,32 @@
 <div class="leftContainer container">
   <h2>Here is the list!</h2>
   <div class="search">
-    <p>The Search bar will be here</p>
+    <label for="search" class="search">Leitaðu að húsnæði</label>
+    <div class="input-group">
+      Póstnúmer:
+      <select name="zipcode" id="zipcode">
+        <option value="">Öll póstnúmer</option>
+        <option value="101">101 - Reykjavík</option>
+        <option value="107">107 - Reykjavík</option>
+        <option value="600">600 - Akureyri </option>
+        <option value="221">221 - Hafnarfjörður</option>
+      </select><br>
 
-    <%= form_tag(properties_getjson_path :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Properties" %>
-      <%= submit_tag "Search", :name => nil %>
-    <% end %>
+      Verð:<input type="text" placeholder="Min" id="priceMin">
+        <input type="text" placeholder="Max" id="priceMax"><br>
+
+      Fjöldi herbergja:<input type="text" placeholder="Min" id="roomsMin">
+          <input type="text" placeholder="Max" id="roomsMax"><br>
+
+      Tegund húsnæðis:
+      <select name="propertyType" id="propertyType">
+        <option value="">Allar tegundir</option>
+        <option value="Einbýlishús">Einbýlishús</option>
+        <option value="Fjölbýlishús">Fjölbýlishús</option>
+      </select><br>
+
+      <input type="button" id="search-button" value="Leita">
+    </div>
 
   </div>
   <div class="propertylist">
@@ -26,6 +46,7 @@
     </table>
   </div>
 </div>
+
 
 <div class="rightContainer container">
   <div id="map"></div>
