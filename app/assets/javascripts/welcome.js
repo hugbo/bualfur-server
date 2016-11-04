@@ -15,7 +15,7 @@ $(function() {
 
         console.log(valuesToSubmit);
         $.ajax({
-            type: "POST", url: "/properties/getjson.json", //sumbits it to the given url of the form
+            type: "POST", url: "/properties/search", //sumbits it to the given url of the form
             data: {
                 search: valuesToSubmit
             },

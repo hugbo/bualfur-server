@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  post 'properties/getjson'
+  post 'properties/search'
 
   resources :properties
 

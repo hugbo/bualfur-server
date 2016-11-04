@@ -42,6 +42,7 @@ class PropertiesController < ApplicationController
     if @search
       puts "Search parameters:"
       puts @search.inspect
+      puts @search["zipcode"]
       @properties = Property.search(params[:search]).order("created_at DESC")
     end
   end
