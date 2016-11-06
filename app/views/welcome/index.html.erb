@@ -1,55 +1,54 @@
 <div class="leftContainer container">
-  <h2>Here is the list!</h2>
-  <div class="search">
-    <label for="search" class="search">Leitaðu að húsnæði</label>
-    <div class="input-group">
-      Póstnúmer:
-      <select name="zipcode" id="zipcode">
-        <option value="">Öll póstnúmer</option>
-        <option value="101">101 - Reykjavík</option>
-        <option value="107">107 - Reykjavík</option>
-        <option value="600">600 - Akureyri </option>
-        <option value="221">221 - Hafnarfjörður</option>
-      </select><br>
+    <h2>Here is the list!</h2>
+    <div class="search">
+        <label for="search" class="search">Leitaðu að húsnæði</label>
+        <div class="input-group">
+            Póstnúmer:
+            <select name="zipcode" id="zipcode">
+                <option value="">Öll póstnúmer</option>
+                <option value="101">101 - Reykjavík</option>
+                <option value="107">107 - Reykjavík</option>
+                <option value="600">600 - Akureyri
+                </option>
+                <option value="221">221 - Hafnarfjörður</option>
+            </select><br>
 
-      Verð:<input type="text" placeholder="Min" id="priceMin" >
-        <input type="text" placeholder="Max" id="priceMax"><br>
+            Verð:<input type="text" placeholder="Min" id="priceMin">
+            <input type="text" placeholder="Max" id="priceMax"><br>
 
-      Fjöldi herbergja:<input type="text" placeholder="Min" id="roomsMin">
-          <input type="text" placeholder="Max" id="roomsMax"><br>
+            Fjöldi herbergja:<input type="text" placeholder="Min" id="roomsMin">
+            <input type="text" placeholder="Max" id="roomsMax"><br>
 
-      Tegund húsnæðis:
-      <select name="propertyType" id="propertyType">
-        <option value="">Allar tegundir</option>
-        <option value="Einbýlishús">Einbýlishús</option>
-        <option value="Fjölbýlishús">Fjölbýlishús</option>
-      </select><br>
+            Tegund húsnæðis:
+            <select name="propertyType" id="propertyType">
+                <option value="">Allar tegundir</option>
+                <option value="Einbýlishús">Einbýlishús</option>
+                <option value="Fjölbýlishús">Fjölbýlishús</option>
+            </select><br>
 
-      <input type="button" id="search-button" value="Leita">
+            <input type="button" id="search-button" value="Leita">
+        </div>
+
     </div>
+    <div class="propertylist">
+        <p>And the property list here</p>
+        <table>
+            <tr>
+                <th>Address</th>
+                <th>Price</th>
+            </tr>
 
-  </div>
-  <div class="propertylist">
-    <p>And the property list here</p>
-    <table>
-      <tr>
-        <th>Address</th>
-        <th>Price</th>
-      </tr>
-
-      <% @property.each do |p| %>
-        <tr>
-          <td><%= p.address%></td>
-          <td><%= p.price%></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+            <% @property.each do |p| %>
+            <tr>
+                <td><%= p.address%></td>
+                <td><%= p.price%></td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
 </div>
 
-
 <div class="rightContainer container">
-  <div id="map"></div>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
+    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
 </div>

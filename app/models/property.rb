@@ -1,41 +1,30 @@
 class Property < ApplicationRecord
-  def self.search(search)
 
-    wildcard = "%"
-    maxPrice = 10000
-    maxRooms = 100
+    # Usage: self.search(search)
+    # Pre: search is the
+    def self.search(criteria)
+        wildcard = '%'
+        maxPrice = 10_000
+        maxRooms = 100
 
-    if search["zipcode"] == ""
-      search["zipcode"] = wildcard
+        search['zipcode'] = wildcard if search['zipcode'] == ''
+
+        search['priceMin'] = 0 if search['priceMin'] == ''
+
+        search['priceMax'] = maxPrice if search['priceMax'] == ''
+
+        search['roomsMin'] = 0 if search['roomsMin'] == ''
+
+        search['roomsMax'] = maxRooms if search['roomsMax'] == ''
+
+        search['propertyType'] = wildcard if search['propertyType'] == ''
+
+        puts 'Performing search'
+        puts search['zipcode']
+        where(
+            'zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
+            search['zipcode'], search['priceMin'], search['priceMax'],
+            search['roomsMin'], search['roomsMax'], search['propertyType']
+        )
     end
-
-    if search["priceMin"] == ""
-      search["priceMin"] = 0
-    end
-
-    if search["priceMax"] == ""
-      search["priceMax"] = maxPrice
-    end
-
-    if search["roomsMin"] == ""
-      search["roomsMin"] = 0
-    end
-
-    if search["roomsMax"] == ""
-      search["roomsMax"] = maxRooms
-    end
-
-    if search["propertyType"] == ""
-      search["propertyType"] = wildcard
-    end
-
-
-    puts "Performing search"
-    puts search["zipcode"]
-    where(
-      "zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?",
-      search["zipcode"], search["priceMin"], search["priceMax"],
-      search["roomsMin"], search["roomsMax"], search["propertyType"]
-    )
-  end
 end
