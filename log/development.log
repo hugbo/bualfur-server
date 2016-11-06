@@ -6913,3 +6913,74 @@ Processing by PropertiesController#search as JSON
 Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-11-06 14:52:04 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (24.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mProperty Load (37.5ms)[0m  [1m[34mSELECT "properties".* FROM "properties"[0m
+  Rendered welcome/index.html.erb within layouts/application (127.6ms)
+Completed 200 OK in 946ms (Views: 817.9ms | ActiveRecord: 110.5ms)
+
+
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 14:56:34 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"400", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.9ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '%101%' AND (price BETWEEN '%123%' AND '%400%') AND (num_bedrooms BETWEEN '%0%' AND '%100%' ) AND property_type ILIKE '%%%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (24.7ms)
+Completed 200 OK in 44ms (Views: 28.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/properties/1" for 127.0.0.1 at 2016-11-06 14:58:09 +0000
+Processing by PropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProperty Load (0.4ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering properties/show.html.erb within layouts/application
+  Rendered properties/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 86ms (Views: 32.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/properties/create" for 127.0.0.1 at 2016-11-06 15:26:24 +0000
+Processing by PropertiesController#show as HTML
+  Parameters: {"id"=>"create"}
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Property with 'id'=create):
+  
+app/controllers/properties_controller.rb:13:in `show'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
+Started GET "/properties/new" for 127.0.0.1 at 2016-11-06 15:27:21 +0000
+Processing by PropertiesController#new as HTML
+  Rendering properties/new.html.erb within layouts/application
+  Rendered properties/new.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/properties/1" for 127.0.0.1 at 2016-11-06 15:45:16 +0000
+Processing by PropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering properties/show.html.erb within layouts/application
+  Rendered properties/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/properties/1" for 127.0.0.1 at 2016-11-06 15:48:51 +0000
+Processing by PropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProperty Load (0.5ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering properties/show.html.erb within layouts/application
+  Rendered properties/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.5ms)
+
+

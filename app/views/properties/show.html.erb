@@ -1,12 +1,46 @@
 <h1>Dank Memes for <em>show</em></h1>
 <h2>For your digestive system</h2>
 
-<p>
-  <strong>Address</strong>
-  <%= @property.address %>
-</p>
+<div>
+  <div>
+    <h3>Address</h3>
+    <p><%= @property.address %></p>
+  </div>
 
-<p>
-  <strong>Price</strong>
-  <%= @property.price  %>
-</p>
+  <div>
+    <h3>Zipcode</h3>
+    <p><%= @property.zipcode  %></p>
+  </div>
+
+  <div>
+    <h3>City</h3>
+    <p><%= @property.city %></p>
+  </div>
+
+  <div>
+    <h3>Price</h3>
+    <p><%= @property.price %></p>
+  </div>
+
+  <div>
+    <h3>Size</h3>
+    <p><%= @property.size %></p>
+  </div>
+
+  <div>
+    <h3>Number of bedrooms</h3>
+    <p><%= @property.num_bedrooms %></p>
+  </div>
+
+  <div>
+    <h3>Number of bathrooms</h3>
+    <p><%= @property.num_bathrooms %></p>
+  </div>
+
+  <div>
+    <h3>Type of property</h3>
+    <p><%= @property.property_type %></p>
+  </div>
+
+
+</div>
