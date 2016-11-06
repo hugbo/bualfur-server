@@ -1,39 +1,40 @@
 class Property < ApplicationRecord
-
-    # Usage: self.search(search)
-    # Pre: search is the
     def self.search(criteria)
+        # local variables
         wildcard = '%'
-        maxPrice = 10_000
-        maxRooms = 100
+        max_price = 10_000
+        max_rooms = 100
 
-        search['zipcode'] = wildcard if search['zipcode'] == ''
+        # check for empty values from the frontend and give them default
+        # values
+        criteria['zipcode'] = wildcard if criteria['zipcode'] == ''
 
-        search['priceMin'] = 0 if search['priceMin'] == ''
+        criteria['priceMin'] = 0 if criteria['priceMin'] == ''
 
-        search['priceMax'] = maxPrice if search['priceMax'] == ''
+        criteria['priceMax'] = max_price if criteria['priceMax'] == ''
 
-        search['roomsMin'] = 0 if search['roomsMin'] == ''
+        criteria['roomsMin'] = 0 if criteria['roomsMin'] == ''
 
-        search['roomsMax'] = maxRooms if search['roomsMax'] == ''
+        criteria['roomsMax'] = max_rooms if criteria['roomsMax'] == ''
 
-        search['propertyType'] = wildcard if search['propertyType'] == ''
+        criteria['propertyType'] = wildcard if criteria['propertyType'] == ''
 
-    puts "Performing search"
-    puts search["zipcode"]
-    if search["zipcode"] == "%"
-      where(
-        "zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?",
-        search["zipcode"], search["priceMin"], search["priceMax"],
-        search["roomsMin"], search["roomsMax"], search["propertyType"]
-      )
-    else
-      where(
-        "zipcode IN (?) AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?",
-        search["zipcode"], search["priceMin"], search["priceMax"],
-        search["roomsMin"], search["roomsMax"], search["propertyType"]
-      )
-    end
+        puts 'Performing search'
+        puts criteria['zipcode']
 
+        # fetch proper where statement
+        if criteria['zipcode'] == '%'
+            where(
+                'zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
+                criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
+                criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
+            )
+        else
+            where(
+                'zipcode IN (?) AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
+                criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
+                criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
+            )
+        end
   end
 end
