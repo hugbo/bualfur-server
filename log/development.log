@@ -6984,3 +6984,372 @@ Processing by PropertiesController#show as HTML
 Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-11-06 15:52:44 +0000
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties"[0m
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 15:52:59 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.9ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '%101%' AND (price BETWEEN '%123%' AND '%10000%') AND (num_bedrooms BETWEEN '%0%' AND '%100%' ) AND property_type ILIKE '%%%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (1.9ms)
+Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:16:24 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.5ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price => '123' AND price <= 10000) AND (num_bedrooms => 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (4.2ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (PG::SyntaxError: ERROR:  syntax error at or near "=>"
+LINE 1: ...properties" WHERE (zipcode ILIKE '101' AND (price => '123' A...
+                                                             ^
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price => '123' AND price <= 10000) AND (num_bedrooms => 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_35433260'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.3ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:18:31 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.7ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (3.7ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: character varying <= integer
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) ...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004243533040'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.4ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (7.8ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:18:48 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (4.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: character varying <= integer
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) ...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004191987740'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.3ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:19:23 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.5ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price =< 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (3.6ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: character varying =< integer
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND price =< 10000) ...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price =< 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004193440400'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.3ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:19:50 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (4.3ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: character varying <= integer
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) ...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004142314380'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.1ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:20:56 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price < 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (3.7ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: character varying < integer
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND price < 10000) A...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price < 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004142986760'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.2ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:21:42 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND 10000 >= price ) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (3.9ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: integer >= character varying
+LINE 1: ...zipcode ILIKE '101' AND (price >= '123' AND 10000 >= price )...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND 10000 >= price ) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__4079347598941971641_70004187722700'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.4ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (7.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeDatatypes (20161106162827)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (36.6ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "price" TYPE integer[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeDatatypes (20161106162827)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (343.2ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "price" TYPE integer USING CAST(price as integer)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161106162827"]]
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (24.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeDatatypesagain (20161106163409)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (129.4ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "zipcode" TYPE integer USING CAST(zipcode as integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "price" TYPE integer USING CAST(price as integer)[0m
+  [1m[35m (111.4ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "size" TYPE integer USING CAST(size as integer)[0m
+  [1m[35m (100.8ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "num_bedrooms" TYPE integer USING CAST(num_bedrooms as integer)[0m
+  [1m[35m (100.9ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "num_bathrooms" TYPE integer USING CAST(num_bathrooms as integer)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161106163409"]]
+  [1m[35m (10.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:35:46 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.7ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (5.3ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedFunction: ERROR:  operator does not exist: integer ~~* unknown
+LINE 1: ...T "properties".* FROM "properties" WHERE (zipcode ILIKE '101...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "properties".* FROM "properties" WHERE (zipcode ILIKE '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC):
+    1: json.properties @properties do |property|
+    2:   json.address property.address
+    3:   json.price property.price
+    4: end
+  
+app/views/properties/search.jbuilder:1:in `_app_views_properties_search_jbuilder__2141597554189623238_21159700'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (8.6ms)
+Started POST "/properties/search" for 127.0.0.1 at 2016-11-06 16:36:17 +0000
+Processing by PropertiesController#search as JSON
+  Parameters: {"search"=>{"zipcode"=>"101", "priceMin"=>"123", "priceMax"=>"", "roomsMin"=>"", "roomsMax"=>"", "propertyType"=>""}}
+  Rendering properties/search.jbuilder
+  [1m[36mProperty Load (0.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE (zipcode = '101' AND (price >= '123' AND price <= 10000) AND (num_bedrooms >= 0 AND num_bedrooms <= 100 ) AND property_type ILIKE '%') ORDER BY created_at DESC[0m
+  Rendered properties/search.jbuilder (15.7ms)
+Completed 200 OK in 25ms (Views: 16.0ms | ActiveRecord: 3.6ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeZipcodetype (20161106163737)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "zipcode" TYPE string USING CAST(zipcode as string)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5786334618075594030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeZipcodetype (20161106163737)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (99.7ms)[0m  [1m[35mALTER TABLE "properties" ALTER COLUMN "zipcode" TYPE character varying[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161106163737"]]
+  [1m[35m (19.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5786334618075594030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (19.2ms)[0m  [1m[31mDELETE FROM "properties"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "properties"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "properties"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("id", "address", "zipcode", "city", "price", "size", "num_bedrooms", "num_bathrooms", "property_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["address", "Eggertsgata 23"], ["zipcode", "101"], ["city", "Reykjavík"], ["price", 3000], ["size", 105], ["num_bedrooms", 2], ["num_bathrooms", 2], ["property_type", "Parhús"], ["created_at", 2016-11-06 16:44:43 UTC], ["updated_at", 2016-11-06 16:44:43 UTC]]
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("id", "address", "zipcode", "city", "price", "size", "num_bedrooms", "num_bathrooms", "property_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 2], ["address", "Melhagi 54"], ["zipcode", "107"], ["city", "Reykjavík"], ["price", 3500], ["size", 174], ["num_bedrooms", 3], ["num_bathrooms", 2], ["property_type", "Einbýlishús"], ["created_at", 2016-11-06 16:44:43 UTC], ["updated_at", 2016-11-06 16:44:43 UTC]]
+  [1m[35m (9.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("id", "address", "zipcode", "city", "price", "size", "num_bedrooms", "num_bathrooms", "property_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 3], ["address", "Háagerði 2"], ["zipcode", "600"], ["city", "Akureyri"], ["price", 1750], ["size", 75], ["num_bedrooms", 1], ["num_bathrooms", 1], ["property_type", "Einbýlishús"], ["created_at", 2016-11-06 16:44:43 UTC], ["updated_at", 2016-11-06 16:44:43 UTC]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("id", "address", "zipcode", "city", "price", "size", "num_bedrooms", "num_bathrooms", "property_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 4], ["address", "Bjargstræti 5"], ["zipcode", "221"], ["city", "Hafnarfjörður"], ["price", 2350], ["size", 136], ["num_bedrooms", 2], ["num_bathrooms", 2], ["property_type", "Einbýlishús"], ["created_at", 2016-11-06 16:44:43 UTC], ["updated_at", 2016-11-06 16:44:43 UTC]]
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m

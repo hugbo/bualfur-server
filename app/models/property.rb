@@ -32,11 +32,10 @@ class Property < ApplicationRecord
 
     puts "Performing search"
     puts search["zipcode"]
-    # where("zipcode ILIKE ? OR price , "%#{search["zipcode"]}%", "%#{search["minPrice"]}%")
     where(
-      "zipcode ILIKE ? AND (price BETWEEN ? AND ?) AND (num_bedrooms BETWEEN ? AND ? ) AND property_type ILIKE ?",
-      "%#{search["zipcode"]}%", "%#{search["priceMin"]}%", "%#{search["priceMax"]}%",
-      "%#{search["roomsMin"]}%", "%#{search["roomsMax"]}%", "%#{search["propertyType"]}%"
+      "zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?",
+      search["zipcode"], search["priceMin"], search["priceMax"],
+      search["roomsMin"], search["roomsMax"], search["propertyType"]
     )
   end
 end
