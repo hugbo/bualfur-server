@@ -33,12 +33,12 @@ function initMap() {
     });
 
     var defaultValues = {
-      zipcode: "",
-      priceMin: "",
-      priceMax: "",
-      roomsMin: "",
-      roomsMax: "",
-      propertyType: ""
+        zipcode: "",
+        priceMin: "",
+        priceMax: "",
+        roomsMin: "",
+        roomsMax: "",
+        propertyType: ""
     }
 
     performSearch(defaultValues);
@@ -46,19 +46,20 @@ function initMap() {
 }
 
 function updateMap(data) {
-    // TODO
-    console.log("Updating map");
-    console.log(data);
-
     // Remove old markers
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
 
+    markers = [];
     // Create new markers
 
     for (var i = 0; i < data.properties.length; i++) {
-        markers.push(new google.maps.Marker({position: data.properties[i].gpslocation, map: map}))
+        markers.push(new google.maps.Marker({
+          position: data.properties[i].gpslocation,
+          map: map,
+          title: data.properties[i].address
+        }))
     }
 
     // Change the view so all markers are visible
@@ -67,11 +68,14 @@ function updateMap(data) {
         bounds.extend(markers[i].getPosition());
     }
 
+    var zoom = map.getZoom();
+
+    map.setZoom(zoom > 5 ? 10 : zoom);
+
     map.fitBounds(bounds);
 }
 
 function updatePropertyList(data) {
-    console.log("Updating list");
     // Remove old listings
     $("#propertylist").find('tr:gt(0)').remove();
 

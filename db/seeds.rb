@@ -17,7 +17,7 @@ Property.create!([
     num_bedrooms: 3, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.143870, lon: -21.961279},
   {id:"e2052ecd-009b-407c-86ae-c15e530f9027", address: "Háagerði 2", zipcode: "600", city: "Akureyri",
     price: 1750, size: 75,
-    num_bedrooms: 1, num_bathrooms: 1, property_type: "Einbýlishús", lat: 64.125395, lon: -21.866344},
+    num_bedrooms: 1, num_bathrooms: 1, property_type: "Einbýlishús", lat: 65.681785, lon: -18.117302},
   {id:"9301be0a-0f9c-409d-b013-622f488a2088", address: "Smyrlahraun 5", zipcode: "220", city: "Hafnarfjörður",
     price: 2350, size: 136,
     num_bedrooms: 2, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.071343, lon: -21.949604}
