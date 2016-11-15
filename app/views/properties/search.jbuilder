@@ -8,7 +8,7 @@ json.properties @properties do |property|
   json.rooms property.num_bedrooms
   json.gpslocation do
     json.lat property.lat
-    json.lon property.lon
+    json.lng property.lon
   end
 
 end
