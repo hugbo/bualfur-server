@@ -52,17 +52,15 @@ function updatePropertyList(data){
   // Insert new listings into property list
 
   for (var i = 0; i < data.properties.length; i++) {
-      var address = data.properties[i].address;
-      var zip = data.properties[i].zipcode;
-      var size = data.properties[i].size;
-      var rooms = data.properties[i].num_bedrooms
       var id = data.properties[i].property_id;
       $('#propertylist tbody').append('<tr>'+
-      '<td>'+address+'</td>'+
-      '<td>'+zip+'</td>'+
-      '<td>'+size+'</td>'+
-      '<td>'+rooms+'</td>'+
-      '<td><a href=/properties/'+id+'> Skoða </a></td>'+
+      '<td>'+data.properties[i].address+'</td>'+
+      '<td>'+data.properties[i].zipcode+'</td>'+
+      '<td>'+data.properties[i].size+'</td>'+
+      '<td>'+data.properties[i].rooms+'</td>'+
+      '<td>'+data.properties[i].price+'</td>'+
+      '<td><a href=/properties/'+data.properties[i].property_id+'>'+
+      'Skoða</a></td>'+
       '</tr>');
   }
 
