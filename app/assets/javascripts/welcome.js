@@ -2,8 +2,6 @@ $(function() {
     console.log("ready!");
 
     $('#search-button').click(function() {
-        console.log("Ayyy lmao");
-
         var valuesToSubmit = {
           zipcode: $('#zipcode').val(),
           priceMin: $('#priceMin').val(),
