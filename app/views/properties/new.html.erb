@@ -34,22 +34,36 @@
 </p>
 
 <p>
-    <%= f.label :numBedrooms, "Number of Bedrooms" %>
+    <%= f.label :num_bedrooms, "Number of Bedrooms" %>
     <br>
-    <%= f.text_field :numBedrooms %>
+    <%= f.text_field :num_bedrooms %>
 </p>
 
 <p>
-    <%= f.label :numBathrooms, "Number of Bathrooms" %>
+    <%= f.label :num_bathrooms, "Number of Bathrooms" %>
     <br>
-    <%= f.text_field :numBathrooms %>
+    <%= f.text_field :num_bathrooms %>
 </p>
 
 <p>
-    <%= f.label :propertyType, "Property Type" %>
+    <%= f.label :property_type, "Property Type" %>
     <br>
-    <%= f.text_field :propertyType %>
+    <%= f.text_field :property_type %>
 </p>
+
+<p>
+  <%= f.label :lat, "Latitude" %>
+    <br>
+    <%= f.text_field :lat %>
+</p>
+
+<p>
+  <%= f.label :lon, "Longitude" %>
+    <br>
+    <%= f.text_field :lon %>
+</p>
+
+
 
 <p>
     <%= f.submit  %>

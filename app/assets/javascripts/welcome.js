@@ -14,23 +14,24 @@ $(function() {
             roomsMax: $('#roomsMax').val(),
             propertyType: $('#propertyType').val()
         }
-
-        console.log(valuesToSubmit);
         performSearch(valuesToSubmit);
         return false; // prevents normal behaviour
     });
+
+    // get CSRF token to make secure POSTS to server
+    var token = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-CSRF-TOken', token);
+      }
+    });
+
 });
 
 function initMap() {
 
-    // var center = {
-    //     lng: -21.949227,
-    //     lat: 64.140457
-    // };
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        // center: center
-    });
+    var center = {'lat':64.139583, 'lng':-21.951879}
+    map = new google.maps.Map($('#map').get(0), {});
 
     var defaultValues = {
         zipcode: "",
@@ -46,57 +47,69 @@ function initMap() {
 }
 
 function updateMap(data) {
-    // Remove old markers
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-    }
+  // Remove old markers
+  for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+  }
 
-    markers = [];
-    // Create new markers
+  markers = [];
 
-    for (var i = 0; i < data.properties.length; i++) {
-        markers.push(new google.maps.Marker({
-          position: data.properties[i].gpslocation,
-          map: map,
-          title: data.properties[i].address
-        }))
-    }
+  if(data.properties.length === 0){
+    return;
+  }
 
-    // Change the view so all markers are visible
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < markers.length; i++) {
-        bounds.extend(markers[i].getPosition());
-    }
+  // Create new markers
+  for (var i = 0; i < data.properties.length; i++) {
+      markers.push(new google.maps.Marker({
+        position: data.properties[i].gpslocation,
+        map: map,
+        title: data.properties[i].address
+      }))
+  }
 
-    var zoom = map.getZoom();
+  // Change the view so all markers are visible
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].getPosition());
+  }
+  map.fitBounds(bounds);
 
-    map.setZoom(zoom > 5 ? 10 : zoom);
-
-    map.fitBounds(bounds);
+  // set minimum zoom
+  if(map.getZoom() > 16){
+    map.setZoom(16);
+  }
 }
 
 function updatePropertyList(data) {
     // Remove old listings
     $("#propertylist").find('tr:gt(0)').remove();
 
-    // Insert new listings into property list
+    if (data.properties.length === 0) {
+      $('#propertylist tbody').append('<tr><td>Engar niðurstöður</td></tr>');
+    } else {
+      // Insert new listings into property list
 
-    for (var i = 0; i < data.properties.length; i++) {
-        var id = data.properties[i].property_id;
-        $('#propertylist tbody').append('<tr>' +
-            '<td>' + data.properties[i].address + '</td>' +
-            '<td>' + data.properties[i].zipcode + '</td>' +
-            '<td>' + data.properties[i].size + '</td>' +
-            '<td>' + data.properties[i].rooms + '</td>' +
-            '<td>' + data.properties[i].price + '</td>' +
-            '<td><a href=/properties/' + data.properties[i].property_id + '>' +
-            'Skoða</a></td>' + '</tr>');
+      for (var i = 0; i < data.properties.length; i++) {
+          var id = data.properties[i].property_id;
+          $('#propertylist tbody').append('<tr>' +
+              '<td>' + data.properties[i].address + '</td>' +
+              '<td>' + data.properties[i].zipcode + '</td>' +
+              '<td>' + data.properties[i].size + '</td>' +
+              '<td>' + data.properties[i].rooms + '</td>' +
+              '<td>' + data.properties[i].price + '</td>' +
+              '<td><a href=/properties/' + data.properties[i].property_id + '>' +
+              'Skoða</a></td>' +
+              '</tr>');
+      }
+
     }
+
 }
 
 function performSearch(query) {
     $.ajax({
-        type: "POST", url: "/properties/search", //sumbits it to the given url of the form
+        type: "POST",
+        url: "/properties/search", //submits it to the given url of the form
         data: {
             search: query
         },

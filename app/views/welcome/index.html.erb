@@ -7,10 +7,12 @@
             <select name="zipcode" id="zipcode">
                 <option value="">Öll póstnúmer</option>
                 <option value="101">101 - Reykjavík</option>
+                <option value="105">105 - Reykjavík</option>
                 <option value="107">107 - Reykjavík</option>
-                <option value="600">600 - Akureyri
-                </option>
+                <option value="210">210 - Garðabær</option>
                 <option value="221">221 - Hafnarfjörður</option>
+                <option value="600">600 - Akureyri </option>
+
             </select><br>
 
             Verð:<input type="text" placeholder="Min" id="priceMin">
@@ -24,6 +26,7 @@
                 <option value="">Allar tegundir</option>
                 <option value="Einbýlishús">Einbýlishús</option>
                 <option value="Fjölbýlishús">Fjölbýlishús</option>
+                <option value="Parhús">Parhús</option>
             </select><br>
 
             <input type="button" id="search-button" value="Leita">
@@ -40,20 +43,10 @@
                 <th>Stærð</th>
                 <th>Svefnherbergi</th>
                 <th>Verð</th>
-                <th></th>
+                <th>Hlekkur</th>
             </tr>
           </thead>
           <tbody>
-            <% @property.each do |p| %>
-            <tr>
-                <td><%= p.address%></td>
-                <td><%= p.zipcode %></td>
-                <td><%= p.size %></td>
-                <td><%= p.num_bedrooms%></td>
-                <td><%= p.price%></td>
-                <td><%= link_to 'Skoða', property_path(p) %></td>
-            </tr>
-            <% end %>
           </tbody>
         </table>
     </div>
