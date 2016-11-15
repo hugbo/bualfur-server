@@ -32,18 +32,29 @@
     </div>
     <div class="propertylist">
         <p>And the property list here</p>
-        <table>
+        <table id="propertylist">
+          <thead>
             <tr>
-                <th>Address</th>
-                <th>Price</th>
+                <th>Heimilisfang</th>
+                <th>Póstnúmer</th>
+                <th>Stærð</th>
+                <th>Svefnherbergi</th>
+                <th>Verð</th>
+                <th></th>
             </tr>
-
+          </thead>
+          <tbody>
             <% @property.each do |p| %>
             <tr>
                 <td><%= p.address%></td>
+                <td><%= p.zipcode %></td>
+                <td><%= p.size %></td>
+                <td><%= p.num_bedrooms%></td>
                 <td><%= p.price%></td>
+                <td><%= link_to 'Skoða', property_path(p) %></td>
             </tr>
             <% end %>
+          </tbody>
         </table>
     </div>
 </div>

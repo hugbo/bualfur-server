@@ -19,20 +19,51 @@ $(function() {
             },
             dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
         }).success(function(json) {
-            console.log("success", json);
+          updatePropertyList(json);
+          updateMap(json);
         });
         return false; // prevents normal behaviour
     });
 });
 
 function initMap() {
-var uluru = {
+var center = {
     lng: -21.949227,
     lat: 64.140457
 };
 var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: uluru
+    center: center
 });
-var marker = new google.maps.Marker({position: uluru, map: map});
+var marker = new google.maps.Marker({position: center, map: map});
+}
+
+function updateMap(data){
+  // TODO
+  console.log("Updating map");
+  console.log(data);
+}
+
+function updatePropertyList(data){
+  console.log("Updating list");
+  // Remove old listings
+  $("#propertylist").find('tr:gt(0)').remove();
+
+  // Insert new listings into property list
+
+  for (var i = 0; i < data.properties.length; i++) {
+      var address = data.properties[i].address;
+      var zip = data.properties[i].zipcode;
+      var size = data.properties[i].size;
+      var rooms = data.properties[i].num_bedrooms
+      var id = data.properties[i].property_id;
+      $('#propertylist tbody').append('<tr>'+
+      '<td>'+address+'</td>'+
+      '<td>'+zip+'</td>'+
+      '<td>'+size+'</td>'+
+      '<td>'+rooms+'</td>'+
+      '<td><a href=/properties/'+id+'> Skoða </a></td>'+
+      '</tr>');
+  }
+
 }
