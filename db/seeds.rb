@@ -20,7 +20,7 @@ Property.create!([
     num_bedrooms: 1, num_bathrooms: 1, property_type: "Einbýlishús", lat: 65.681785, lon: -18.117302},
   {id:"9301be0a-0f9c-409d-b013-622f488a2088", address: "Smyrlahraun 5", zipcode: "220", city: "Hafnarfjörður",
     price: 2350, size: 136,
-    num_bedrooms: 2, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.071343, lon: -21.949604}
+    num_bedrooms: 2, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.071343, lon: -21.949604},
   {id:"87a3b4fd-929c-4133-900d-ad0e31e2f91c", address: "Hraunberg 5", zipcode: "111", city: "Reykjavik",
     price: 3500, size: 160, num_bedrooms: 4, num_bathrooms: 2, property_type: "Parhús", lat: 64.105512, lon: -21.812923},
   {id:"f959a6b2-7b28-46af-ba82-b3c5d610db4c", address: "Hilton Reykjavik Nordica", zipcode: "108", city: "Akureyri",
