@@ -16,6 +16,7 @@ $raleway: Raleway, sans-serif;
 // Colors
 
 $blue: #062F4F;
+$orange: #ee7600;
 $purple: #813772;
 $embers: #882601;
 
@@ -69,6 +70,12 @@ h1, h2, h3, h4, h5, h6 {
 
 // Search container
 
+span.hiddenValue {
+  color: #333333;
+  background-color: #eeeee0;
+  padding: 0 2% 0 2%;
+}
+
 .leftContainer {
   width: 50%;
   height: (100% - $navbarHeight);
@@ -84,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .input-group {
-  height: 70%;
+
 }
 
 .postnumer {
@@ -95,15 +102,21 @@ h1, h2, h3, h4, h5, h6 {
 
 #postnumerCollapse {
   overflow-y: auto;
-    height: 22em;
+    height: 23em;
+    margin-bottom: 0;
+    background-color: $orange;
 }
 
 .otherInputs {
-  margin-left: 50%;
+  margin-left: 55%;
 }
 
 .propertylist {
   overflow-y: scroll;
+}
+
+#search-button {
+  margin-top: 0;
 }
 
 // Map container

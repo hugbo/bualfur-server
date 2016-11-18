@@ -139,22 +139,36 @@ $(function() {
 
 // Search fields
 
+  $('#searchToggle').click(function() {
+    $('.input-group').toggle(200);
+    $('#searchValue').toggle(100);
+  });
+
   $('#postnumerToggle').click(function() {
-    $('#postnumerCollapse').toggle(400);
+    $('#postnumerCollapse').toggle(200);
+    $('#postnumerValue').toggle(100);
     $('#postnumer').toggleClass('postnumer');
     $('#otherInputs').toggleClass('otherInputs');
   });
 
   $('#verdToggle').click(function() {
-    $('#verdCollapse').toggle();
+    $('#verdCollapse').toggle(100);
+    $('#verdValue').toggle(100);
   });
 
   $('#numRoomsToggle').click(function() {
-    $('#numRoomsCollapse').toggle();
+    $('#numRoomsCollapse').toggle(100);
+    $('#numRoomsValue').toggle(100);
   });
 
   $('#houseTypeToggle').click(function() {
-    $('#houseTypeCollapse').toggle();
+    $('#houseTypeCollapse').toggle(100);
+    $('#houseTypeValue').toggle(100);
+  });
+
+  $('#squareFeetToggle').click(function() {
+    $('#squareFeetCollapse').toggle(100);
+    $('#squareFeetValue').toggle(100);
   });
 
 // Postnumer

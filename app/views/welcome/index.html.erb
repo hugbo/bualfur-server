@@ -1,12 +1,15 @@
 <div class="leftContainer container">
-    <h2>Here is the list!</h2>
     <div class="search">
-        <label for="search" class="search">Leitaðu að húsnæði</label>
+        <label for="search" class="search"><span id="searchToggle">LEIT</span>
+        <span id="searchValue" class="hiddenValue" style="display: none">Placeholder</span>
+        </label>
         <div class="input-group">
 
 
           <div id="postnumer" class="postnumer">
-            <p id="postnumerToggle">Póstnúmer:</p>
+            <p id="postnumerToggle">Póstnúmer:
+            <span id="postnumerValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
             <div id="postnumerCollapse">
               <form>
                   <input type="checkbox" name="zipALL"
@@ -83,34 +86,110 @@
           </div>
 
           <div id="otherInputs" class="otherInputs">
-            <p id="verdToggle">Verð:</p>
+            <p id="verdToggle">Verð:
+            <span id="verdValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
             <div id="verdCollapse">
               <input type="text" placeholder="Min" id="priceMin">
               <input type="text" placeholder="Max" id="priceMax"><br>
             </div>
 
-            <p id="numRoomsToggle">Fjöldi herbergja:</p>
+            <p id="numRoomsToggle">Fjöldi herbergja:
+            <span id="numRoomsValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
             <div id="numRoomsCollapse">
-              <input type="text" placeholder="Min" id="roomsMin">
-              <input type="text" placeholder="Max" id="roomsMax"><br>
+              <select id="min-rooms">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+              </select>
+              <span>til</span>
+              <select id="max-rooms">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7+</option>
+              </select>
             </div>
 
 
-            <p id="houseTypeToggle"> Tegund húsnæðis:</p>
+            <p id="houseTypeToggle"> Tegund húsnæðis:
+            <span id="houseTypeValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
             <div id="houseTypeCollapse">
-              <select name="propertyType" id="propertyType">
-                  <option value="">Allar tegundir</option>
-                  <option value="Einbýlishús">Einbýlishús</option>
-                  <option value="Fjölbýlishús">Fjölbýlishús</option>
-                  <option value="Parhús">Parhús</option>
-              </select><br>
+              <form>
+                <input type="checkbox" value="select-all">Allar tegundir
+                <input type="checkbox" value="villas">Einbýli
+                <input type="checkbox" value="apartments">Fjölbýli
+                <input type="checkbox" value="duet">Parhús
+              </form>
             </div>
+
+            <p id="squareFeetToggle">Fermetrar:
+            <span id="squareFeetValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="squareFeetCollapse">
+              <select id="min-size">
+                  <option value="0">0</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                  <option value="125">125</option>
+                  <option value="150">150</option>
+                  <option value="175">175</option>
+                  <option value="200">200</option>
+                  <option value="225">225</option>
+                  <option value="250">250</option>
+                  <option value="275">275</option>
+                  <option value="300">300</option>
+                  <option value="350">350</option>
+                  <option value="400">400</option>
+              </select>
+              <span>til</span>
+              <select id="max-size">
+                  <option value="0">0</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                  <option value="125">125</option>
+                  <option value="150">150</option>
+                  <option value="175">175</option>
+                  <option value="200">200</option>
+                  <option value="225">225</option>
+                  <option value="250">250</option>
+                  <option value="275">275</option>
+                  <option value="300">300</option>
+                  <option value="350">350</option>
+                  <option value="400">400</option>
+                  <option value="450">450</option>
+              </select>
+            </div>
+
           </div>
 
-          <input type="button" id="search-button" value="Leita">
-
-
+            <input type="button" id="search-button" value="Leita">
         </div>
+
     </div>
     <div class="propertylist">
         <p>And the property list here</p>
