@@ -3,12 +3,6 @@ class PropertiesController < ApplicationController
     # functions defined from rails routes
 
     def index
-        @properties = Property.all
-        if params[:search]
-            @properties = Property.search(params[:search]).order('created_at DESC')
-        else
-            @properties = Property.all.order('created_at DESC')
-        end
     end
 
     def show
@@ -35,14 +29,16 @@ class PropertiesController < ApplicationController
     end
 
     def search
-        @properties = Property.all
         @search = params[:search]
         if @search
             puts 'Search parameters:'
             puts @search.inspect
             puts @search['zipcode']
             @properties = Property.search(params[:search]).order('created_at DESC')
+        else
+          @properties = Property.all
         end
+
     end
 
     private
