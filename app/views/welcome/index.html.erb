@@ -10,11 +10,13 @@
             <div id="postnumerCollapse">
               <form>
                   <input type="checkbox" name="zipALL"
-                  onchange="handleChange(this)"><span id="zipAll">Öll póstnúmer</input><br>
+                  onchange="handleChange(this)">Öll póstnúmer</input><br>
 
                   <input type="checkbox" name="REY" name="zipMANY"
-                  onchange="handleChange(this)">Reykjavík</input><br>
-                  <div class="zipCollapse" id="zipALL" style="display: none">
+                    onchange="handleChange(this)">
+                    <span id="toggleREY">Reykjavík</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseREY" style="display: none">
                     <input type="checkbox" name="zipREY" value="101">101</input><br>
                     <input type="checkbox" name="zipREY" value="103">103</input><br>
                     <input type="checkbox" name="zipREY" value="104">104</input><br>
@@ -31,33 +33,49 @@
                   </div>
 
                   <input type="checkbox" name="SEL"
-                  onchange="handleChange(this)">Seltjarnarnes</input><br>
-                  <div class="zipCollapse" id="zipSEL" style="display: none">
-
+                  onchange="handleChange(this)">
+                  <span id="toggleSEL">Seltjarnarnes</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseSEL" style="display: none">
+                    <input type="checkbox" name="zipSEL" value="170">170</input>
                   </div>
 
                   <input type="checkbox" name="KOP"
-                  onchange="handleChange(this)">Kópavogur</input><br>
-                  <div class="zipCollapse" id="zipKOP" style="display: none">
-
+                  onchange="handleChange(this)">
+                  <span id="toggleKOP">Kópavogur</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseKOP" style="display: none">
+                    <input type="checkbox" name="zipKOP" value="200">200</input><br>
+                    <input type="checkbox" name="zipKOP" value="201">201</input><br>
+                    <input type="checkbox" name="zipKOP" value="203">203</input><br>
                   </div>
 
                   <input type="checkbox" name="GAR"
-                  onchange="handleChange(this)">Garðabær</input><br>
-                  <div class="zipCollapse" id="zipGAR" style="display: none">
-
+                  onchange="handleChange(this)">
+                  <span id="toggleGAR">Garðabær</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseGAR" style="display: none">
+                    <input type="checkbox" name="zipGAR" value="210">210</input><br>
+                    <input type="checkbox" name="zipGAR" value="225">225</input><br>
                   </div>
 
                   <input type="checkbox" name="HAF"
-                  onchange="handleChange(this)">Hafnarfjörður</input><br>
-                  <div class="zipCollapse" id="zipHAF" style="display: none">
-
+                  onchange="handleChange(this)">
+                  <span id="toggleHAF">Hafnarfjörður</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseHAF" style="display: none">
+                    <input type="checkbox" name="zipHAF" value="220">220</input><br>
+                    <input type="checkbox" name="zipHAF" value="221">221</input><br>
                   </div>
 
                   <input type="checkbox" name="MOS"
-                  onchange="handleChange(this)">Mosfellsbær </input><br>
-                  <div class="zipCollapse" id="zipMOS" style="display: none">
-
+                  onchange="handleChange(this)">
+                  <span id="toggleMOS">Mosfellsbær</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseMOS" style="display: none">
+                    <input type="checkbox" name="zipMOS" value="270">270</input><br>
+                    <input type="checkbox" name="zipMOS" value="271">271</input><br>
+                    <input type="checkbox" name="zipMOS" value="276">276</input><br>
                   </div>
 
               </form><br>

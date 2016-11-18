@@ -78,19 +78,24 @@ h1, h2, h3, h4, h5, h6 {
   * {
     margin: 5%;
   }
+  span {
+    margin: 0;
+  }
 }
 
 .input-group {
   height: 70%;
-
 }
 
 .postnumer {
   width: 50%;
-  height: 30em;
   float: left;
   margin-top: -2.5%;
+}
+
+#postnumerCollapse {
   overflow-y: auto;
+    height: 22em;
 }
 
 .otherInputs {

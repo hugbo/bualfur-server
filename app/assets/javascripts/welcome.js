@@ -140,7 +140,7 @@ $(function() {
 // Search fields
 
   $('#postnumerToggle').click(function() {
-    $('#postnumerCollapse').toggle();
+    $('#postnumerCollapse').toggle(400);
     $('#postnumer').toggleClass('postnumer');
     $('#otherInputs').toggleClass('otherInputs');
   });
@@ -159,12 +159,29 @@ $(function() {
 
 // Postnumer
 
+  $('#toggleREY').click(function(){
+    $('#collapseREY').toggle(100);
+  });
 
+  $('#toggleSEL').click(function(){
+    $('#collapseSEL').toggle(100);
+  });
 
+  $('#toggleKOP').click(function(){
+    $('#collapseKOP').toggle(100);
+  });
 
+  $('#toggleGAR').click(function(){
+    $('#collapseGAR').toggle(100);
+  });
 
+  $('#toggleHAF').click(function(){
+    $('#collapseHAF').toggle(100);
+  });
 
-
+  $('#toggleMOS').click(function(){
+    $('#collapseMOS').toggle(100);
+  });
 
 
 });
