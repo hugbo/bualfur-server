@@ -2,18 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//===========
 // Variables
+//===========
+
+// Fonts
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
 
 $openSans: Open Sans, sans-serif;
 $raleway: Raleway, sans-serif;
 
+// Colors
+
 $blue: #062F4F;
 $purple: #813772;
 $embers: #882601;
 
+// Containers
+
+$navbarHeight: 10%;
+
+//===============
 // General rules
+//===============
 
 * {
   font-family: $openSans;
@@ -33,25 +45,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container {
-  height: 100%;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
+  display: inline-block;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+//============
+// Containers
+//============
+
+// Navbar
+
+#navbar {
+  background-color: $purple;
+  width: 100%;
+  height: $navbarHeight;
   display: inline-block;
 }
 
 // Search container
 
 .leftContainer {
+  width: 50%;
+  height: (100% - $navbarHeight);
   background-color: $blue;
   float: left;
+  overflow-y: auto;
   * {
     margin: 5%;
   }
 }
 
+.input-group {
+  height: 70%;
+
+}
+
+.postnumer {
+  width: 50%;
+  height: 30em;
+  float: left;
+  margin-top: -2.5%;
+  overflow-y: auto;
+}
+
+.otherInputs {
+  margin-left: 50%;
+}
+
+.propertylist {
+  overflow-y: scroll;
+}
+
 // Map container
 
 .rightContainer {
+  width: 50%;
+  height: (100% - $navbarHeight);
   background-color: $embers;
   float: right;
 }

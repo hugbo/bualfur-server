@@ -119,3 +119,52 @@ function performSearch(query) {
         updateMap(json);
     });
 }
+
+// Checkbox logig
+/*
+function handleChange(checkbox) {
+  if (checkbox.checked == true) {
+    if (checkbox.name == zipALL) {
+      $('input[name='zipMANY']').prop('checked', true);
+    }
+  } else {
+    if (checkbox.name == zipALL) {
+      $('input[name='zipMANY']').prop('checked', false);
+    }
+  }
+}
+*/
+// Animations
+$(function() {
+
+// Search fields
+
+  $('#postnumerToggle').click(function() {
+    $('#postnumerCollapse').toggle();
+    $('#postnumer').toggleClass('postnumer');
+    $('#otherInputs').toggleClass('otherInputs');
+  });
+
+  $('#verdToggle').click(function() {
+    $('#verdCollapse').toggle();
+  });
+
+  $('#numRoomsToggle').click(function() {
+    $('#numRoomsCollapse').toggle();
+  });
+
+  $('#houseTypeToggle').click(function() {
+    $('#houseTypeCollapse').toggle();
+  });
+
+// Postnumer
+
+
+
+
+
+
+
+
+
+});
