@@ -31,6 +31,8 @@ gem 'figaro'
 
 gem 'omniauth-facebook'
 
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
