@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :owned_property, :class_name => 'Property'
+  has_one :rented_property, :class_name => 'Property'
+
   class << self
     def from_omniauth(auth_hash)
       puts auth_hash

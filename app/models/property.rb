@@ -1,40 +1,43 @@
 class Property < ApplicationRecord
-    def self.search(criteria)
-        # local variables
-        wildcard = '%'
-        max_price = 10_000
-        max_rooms = 100
+  has_one :landlord, class_name: 'User', :foreign_key => 'uid'
+  has_one :tenant, class_name: 'User', :foreign_key => 'uid'
 
-        # check for empty values from the frontend and give them default
-        # values
-        criteria['zipcode'] = wildcard if criteria['zipcode'] == ''
+  def self.search(criteria)
+    # local variables
+    wildcard = '%'
+    max_price = 10_000
+    max_rooms = 100
 
-        criteria['priceMin'] = 0 if criteria['priceMin'] == ''
+    # check for empty values from the frontend and give them default
+    # values
+    criteria['zipcode'] = wildcard if criteria['zipcode'] == ''
 
-        criteria['priceMax'] = max_price if criteria['priceMax'] == ''
+    criteria['priceMin'] = 0 if criteria['priceMin'] == ''
 
-        criteria['roomsMin'] = 0 if criteria['roomsMin'] == ''
+    criteria['priceMax'] = max_price if criteria['priceMax'] == ''
 
-        criteria['roomsMax'] = max_rooms if criteria['roomsMax'] == ''
+    criteria['roomsMin'] = 0 if criteria['roomsMin'] == ''
 
-        criteria['propertyType'] = wildcard if criteria['propertyType'] == ''
+    criteria['roomsMax'] = max_rooms if criteria['roomsMax'] == ''
 
-        puts 'Performing search'
-        puts criteria['zipcode']
+    criteria['propertyType'] = wildcard if criteria['propertyType'] == ''
 
-        # fetch proper where statement
-        if criteria['zipcode'] == '%'
-            where(
-                'zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
-                criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
-                criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
-            )
-        else
-            where(
-                'zipcode IN (?) AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
-                criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
-                criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
-            )
-        end
+    puts 'Performing search'
+    puts criteria['zipcode']
+
+    # fetch proper where statement
+    if criteria['zipcode'] == '%'
+        where(
+            'zipcode ILIKE ? AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
+            criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
+            criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
+        )
+    else
+        where(
+            'zipcode IN (?) AND (price >= ? AND price <= ?) AND (num_bedrooms >= ? AND num_bedrooms <= ? ) AND property_type ILIKE ?',
+            criteria['zipcode'], criteria['priceMin'], criteria['priceMax'],
+            criteria['roomsMin'], criteria['roomsMax'], criteria['propertyType']
+        )
+    end
   end
 end
