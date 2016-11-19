@@ -24,6 +24,12 @@ $embers: #882601;
 
 $navbarHeight: 10%;
 
+// Media queries
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
 //===============
 // General rules
 //===============
@@ -72,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 
 span.hiddenValue {
   color: #333333;
-  background-color: #eeeee0;
+  background-color: #ffffff;
   padding: 0 2% 0 2%;
 }
 
@@ -88,27 +94,81 @@ span.hiddenValue {
   span {
     margin: 0;
   }
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointMap) {
+    width: 100%;
+    float: none;
+    height: auto;
+
+    * {
+      margin: 2.5%;
+    }
+
+  }
 }
 
 .input-group {
+  min-height: 30em;
 
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    min-height: 0;
+  }
 }
 
 .postnumer {
   width: 50%;
   float: left;
   margin-top: -2.5%;
+
+  input.hasValue {
+    margin: 2.5%;
+  }
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    width: 100%;
+    float: none;
+
+    input {
+      margin: 2.5%;
+    }
+
+    input.hasValue {
+      margin: 1.25%;
+    }
+
+  }
+
 }
 
 #postnumerCollapse {
   overflow-y: auto;
-    height: 23em;
+    max-height: 23em;
     margin-bottom: 0;
     background-color: $orange;
+
+    // Media queries
+
+    @media screen and (max-width: $breakpointMap) {
+      max-height: 25em;
+    }
 }
 
 .otherInputs {
+  min-height: 26em;
   margin-left: 55%;
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    margin-left: inherit;
+    min-height: 0;
+  }
 }
 
 .propertylist {
@@ -116,7 +176,7 @@ span.hiddenValue {
 }
 
 #search-button {
-  margin-top: 0;
+  margin: 0;
 }
 
 // Map container
@@ -126,6 +186,13 @@ span.hiddenValue {
   height: (100% - $navbarHeight);
   background-color: $embers;
   float: right;
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointMap) {
+    width: 100%;
+    float: none;
+  }
 }
 
 #map {
