@@ -8,32 +8,38 @@
 
 User.delete_all
 
-@user = User.create(provider: "facebook", uid: "10210810816927",
-  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
-
 Property.delete_all
 
-Property.create!([
-  {id:"175d8ecf-6d8c-40b9-aa18-19532388a878", address: "Eggertsgata 23", zipcode: "101", city: "Reykjavík",
-    price: 3000, size: 105,
-    num_bedrooms: 2, num_bathrooms: 2, property_type: "Parhús", lat: 64.135796,lon: -21.951066,
-    landlord: @user},
-  {id:"451534e5-3127-4965-91d9-50a4c4c7c4ec", address: "Melhagi 54", zipcode: "107", city: "Reykjavík",
-    price: 3500, size: 174,
-    num_bedrooms: 3, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.143870, lon: -21.961279,
-    landlord: @user},
-  {id:"e2052ecd-009b-407c-86ae-c15e530f9027", address: "Háagerði 2", zipcode: "600", city: "Akureyri",
-    price: 1750, size: 75,
-    num_bedrooms: 1, num_bathrooms: 1, property_type: "Einbýlishús", lat: 65.681785, lon: -18.117302,
-    landlord: @user},
-  {id:"9301be0a-0f9c-409d-b013-622f488a2088", address: "Smyrlahraun 5", zipcode: "220", city: "Hafnarfjörður",
-    price: 2350, size: 136,
-    num_bedrooms: 2, num_bathrooms: 2, property_type: "Einbýlishús", lat: 64.071343, lon: -21.949604,
-    landlord: @user},
-  {id:"87a3b4fd-929c-4133-900d-ad0e31e2f91c", address: "Hraunberg 5", zipcode: "111", city: "Reykjavik",
-    price: 3500, size: 160, num_bedrooms: 4, num_bathrooms: 2, property_type: "Parhús", lat: 64.105512, lon: -21.812923,
-    landlord: @user},
-  {id:"f959a6b2-7b28-46af-ba82-b3c5d610db4c", address: "Hilton Reykjavik Nordica", zipcode: "108", city: "Akureyri",
-    price: 5000, size: 200, num_bedrooms: 10, num_bathrooms: 5, property_type: "Fjölbýlishús", lat: 64.139823, lon: -21.888772,
-    landlord: @user}
-])
+property_list = [
+  ["175d8ecf-6d8c-40b9-aa18-19532388a878", "Eggertsgata 23", "101", "Reykjavík",
+    3000, 105, 2, 2, "Parhús", 64.135796, -21.951066 ],
+  ["451534e5-3127-4965-91d9-50a4c4c7c4ec", "Melhagi 54", "107", "Reykjavík",
+    3500, 174, 3, 2, "Einbýlishús", 64.143870,  -21.961279 ],
+  ["e2052ecd-009b-407c-86ae-c15e530f9027", "Háagerði 2", "600", "Akureyri",
+    1750, 75, 1, 1, "Einbýlishús", 65.681785,  -18.117302 ],
+  ["9301be0a-0f9c-409d-b013-622f488a2088", "Smyrlahraun 5", "220", "Hafnarfjörður",
+    2350, 136, 2, 2, "Einbýlishús", 64.071343,  -21.949604 ],
+  ["87a3b4fd-929c-4133-900d-ad0e31e2f91c", "Hraunberg 5", "111", "Reykjavik",
+    3500, 160, 4, 2, "Parhús", 64.105512,  -21.812923 ],
+  ["f959a6b2-7b28-46af-ba82-b3c5d610db4c", "Hilton Reykjavik Nordica", "108", "Akureyri",
+    5000, 200, 10, 5, "Fjölbýlishús", 64.139823,  -21.888772 ]
+]
+
+tmp_user = User.new(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
+  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
+
+puts tmp_user.uid
+
+property_list.each do |id, address, zipcode, city, price, size, num_bedrooms,
+  num_bathrooms, property_type, lat, lon|
+
+  prop = Property.create!(id: id, address: address, zipcode: zipcode, city: city,
+    price: price, size: size, num_bedrooms: num_bedrooms,
+    num_bathrooms: num_bathrooms, property_type: property_type,
+    lat: lat, lon: lon)
+
+  prop.create_landlord!(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
+    created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
+
+  puts prop.landlord
+ end
