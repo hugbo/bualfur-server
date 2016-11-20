@@ -8,6 +8,9 @@
 
 User.delete_all
 
+User.create!(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
+  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
+
 Property.delete_all
 
 property_list = [
@@ -25,10 +28,7 @@ property_list = [
     5000, 200, 10, 5, "Fjölbýlishús", 64.139823,  -21.888772 ]
 ]
 
-tmp_user = User.new(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
-  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
-
-puts tmp_user.uid
+tmp_landlord = User.where(:uid => "10210810816927").first
 
 property_list.each do |id, address, zipcode, city, price, size, num_bedrooms,
   num_bathrooms, property_type, lat, lon|
@@ -36,10 +36,12 @@ property_list.each do |id, address, zipcode, city, price, size, num_bedrooms,
   prop = Property.create!(id: id, address: address, zipcode: zipcode, city: city,
     price: price, size: size, num_bedrooms: num_bedrooms,
     num_bathrooms: num_bathrooms, property_type: property_type,
-    lat: lat, lon: lon)
+    lat: lat, lon: lon, landlord: tmp_landlord)
 
-  prop.create_landlord!(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
-    created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
+  prop.landlord = tmp_landlord
+
 
   puts prop.landlord
  end
+
+ puts Property.where(:zipcode => "101").first.landlord.uid

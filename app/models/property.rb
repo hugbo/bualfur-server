@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
-  has_one :landlord, class_name: 'User', :foreign_key => 'uid'
-  has_one :tenant, class_name: 'User', :foreign_key => 'uid'
+  belongs_to :landlord, class_name: 'User', foreign_key: "uid"
+  belongs_to :tenant, class_name: 'User', optional: true
 
   def self.search(criteria)
     # local variables

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :owned_property, :class_name => 'Property'
-  has_one :rented_property, :class_name => 'Property'
+  has_many :owned_property, :class_name => 'Property', :foreign_key => "uid"
+  has_one :rented_property, :class_name => 'Property', :foreign_key => "uid"
 
   class << self
     def from_omniauth(auth_hash)
