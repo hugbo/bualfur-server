@@ -1,4 +1,8 @@
 <div class="leftContainer container">
+  <% if params[:unauthorized_creation] %>
+    <h1> Please login before trying to create a listing</h1>
+  <% end %>
+
     <div class="search">
         <label for="search" class="search"><span id="searchToggle">LEIT</span>
         <span id="searchValue" class="hiddenValue" style="display: none">Placeholder</span>

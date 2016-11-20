@@ -10,6 +10,9 @@ class PropertiesController < ApplicationController
     end
 
     def new
+      if !(current_user.present?)
+        redirect_to root_path(:unauthorized_creation => true)
+      end
     end
 
     def edit
