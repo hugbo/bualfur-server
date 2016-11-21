@@ -88,6 +88,7 @@ span.hiddenValue {
   background-color: $blue;
   float: left;
   overflow-y: auto;
+
   * {
     margin: 5%;
   }
@@ -155,8 +156,9 @@ span.hiddenValue {
     // Media queries
 
     @media screen and (max-width: $breakpointMap) {
-      max-height: 25em;
+      max-height: 28em;
     }
+
 }
 
 .otherInputs {
@@ -171,12 +173,48 @@ span.hiddenValue {
   }
 }
 
+#search-button {
+  margin: 0;
+}
+
+// Property list container
+
 .propertylist {
+  margin: 5% 0 5% 0;
+  display: flex;
   overflow-y: scroll;
 }
 
-#search-button {
-  margin: 0;
+#propertylist {
+  width: 100%;
+  margin: 5% 0 5% 0;
+  border: collapse;
+
+  th {
+    text-align: left;
+  }
+
+  th:first-child {
+    padding-left: 2.5%;
+  }
+
+  td {
+    height: 5em;
+  }
+
+  td:first-child {
+    padding-left: 2.5%;
+  }
+
+  tbody, thead {
+    margin: 5%;
+  }
+
+  tbody > tr:hover {
+    background-color: lighten($blue, 10%);
+    cursor: pointer;
+  }
+
 }
 
 // Map container

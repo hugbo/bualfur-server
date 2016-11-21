@@ -91,16 +91,22 @@ function updatePropertyList(data) {
 
       for (var i = 0; i < data.properties.length; i++) {
           var id = data.properties[i].property_id;
-          $('#propertylist tbody').append('<tr>' +
+          $('#propertylist tbody').append('<tr class="propertyRow" data-url=/properties/' +
+              data.properties[i].property_id + '>' +
               '<td>' + data.properties[i].address + '</td>' +
               '<td>' + data.properties[i].zipcode + '</td>' +
               '<td>' + data.properties[i].size + '</td>' +
               '<td>' + data.properties[i].rooms + '</td>' +
               '<td>' + data.properties[i].price + '</td>' +
-              '<td><a href=/properties/' + data.properties[i].property_id + '>' +
-              'Skoða</a></td>' +
               '</tr>');
       }
+
+      $(function() {
+        $('.propertyRow').click(function() {
+          console.log('ayy');
+          window.location = $(this).data('url');
+        });
+      });
 
     }
 
@@ -120,24 +126,58 @@ function performSearch(query) {
     });
 }
 
-// Checkbox logig
-/*
+
+// Checkbox logic
+
 function handleChange(checkbox) {
   if (checkbox.checked == true) {
-    if (checkbox.name == zipALL) {
-      $('input[name='zipMANY']').prop('checked', true);
-    }
+
+    if (checkbox.name == 'zipALL') $('.zipMANY').prop('checked', true).trigger('change');
+    else if (checkbox.name == 'REY') $('.zipREY').prop('checked', true);
+    else if (checkbox.name == 'SEL') $('.zipSEL').prop('checked', true);
+    else if (checkbox.name == 'KOP') $('.zipKOP').prop('checked', true);
+    else if (checkbox.name == 'GAR') $('.zipGAR').prop('checked', true);
+    else if (checkbox.name == 'HAF') $('.zipHAF').prop('checked', true);
+    else if (checkbox.name == 'MOS') $('.zipMOS').prop('checked', true);
+
   } else {
-    if (checkbox.name == zipALL) {
-      $('input[name='zipMANY']').prop('checked', false);
-    }
+
+    if (checkbox.name == 'zipALL') $('.zipMANY').prop('checked', false).trigger('change');
+    else if (checkbox.name == 'REY') $('.zipREY').prop('checked', false);
+    else if (checkbox.name == 'SEL') $('.zipSEL').prop('checked', false);
+    else if (checkbox.name == 'KOP') $('.zipKOP').prop('checked', false);
+    else if (checkbox.name == 'GAR') $('.zipGAR').prop('checked', false);
+    else if (checkbox.name == 'HAF') $('.zipHAF').prop('checked', false);
+    else if (checkbox.name == 'MOS') $('.zipMOS').prop('checked', false);
+
   }
 }
-*/
-// Animations
+
+// Search field logic
+
 $(function() {
 
-// Search fields
+  $('#min-size').change(function() {
+    var min = $('#min-size').val();
+    var max = $('#max-size').val();
+
+    if (min > max) $('#max-size').val(min);
+  });
+
+  $('#max-size').change(function() {
+    var max = $('#max-size').val();
+    var min = $('#min-size').val();
+
+    if (min < max) $('#min-size').val(max);
+  })
+
+});
+
+// Animations
+
+$(function() {
+
+
 
   $('#searchToggle').click(function() {
     $('.input-group').toggle(200);
@@ -171,7 +211,7 @@ $(function() {
     $('#squareFeetValue').toggle(100);
   });
 
-// Postnumer
+
 
   $('#toggleREY').click(function(){
     $('#collapseREY').toggle(100);
