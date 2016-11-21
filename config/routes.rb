@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get 'properties/my_properties'
+
   post 'properties/search'
 
   resources :properties
