@@ -20,6 +20,7 @@ class PropertiesController < ApplicationController
 
     def create
         @property = Property.new(property_params)
+        @property.landlord = current_user
 
         @property.save
         redirect_to @property
