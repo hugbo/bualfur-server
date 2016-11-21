@@ -160,15 +160,17 @@ $(function() {
   $('#min-size').change(function() {
     var min = $('#min-size').val();
     var max = $('#max-size').val();
+    console.log(min + ' > ' + max + ': ' + (+min > +max));
 
-    if (min > max) $('#max-size').val(min);
+    if (+min > +max) $('#max-size').val(min);
   });
 
   $('#max-size').change(function() {
     var max = $('#max-size').val();
     var min = $('#min-size').val();
+    console.log(min + ' > ' + max + ': ' + (+min > +max));
 
-    if (min < max) $('#min-size').val(max);
+    if (+min > +max) $('#min-size').val(max);
   })
 
 });
@@ -186,29 +188,80 @@ $(function() {
 
   $('#postnumerToggle').click(function() {
     $('#postnumerCollapse').toggle(200);
-    $('#postnumerValue').toggle(100);
+    $('#postnumerValue').toggle(100).text('');
     $('#postnumer').toggleClass('postnumer');
     $('#otherInputs').toggleClass('otherInputs');
+
+    var arrayZip = $('input:checkbox:checked.hasValue').map(function() {
+      return ($(this).val());
+    }).get();
+
+    if (arrayZip.length === 0) $('#postnumerValue').text('Ekkert valið')
+    else if (arrayZip.length > 3) {
+      for (var i = 0; i < 3; i++) {
+        $('#postnumerValue').append(arrayZip[i] + ', ');
+      }
+      $('#postnumerValue').append('...');
+    } else {
+      for (var i = 0; i < arrayZip.length; i++) {
+        $('#postnumerValue').append(' ' + arrayZip[i]);
+      }
+    }
   });
 
   $('#verdToggle').click(function() {
     $('#verdCollapse').toggle(100);
     $('#verdValue').toggle(100);
+
+    var min = $('#priceMin').val();
+    var max = $('#priceMax').val();
+    if (min != '' && max != '') {
+
+      if (min == max) $('#verdValue').text(min);
+      else $('#verdValue').text(min + ' til ' + max);
+
+    } else {
+      $('#verdValue').text('Ekkert valið');
+    }
   });
 
   $('#numRoomsToggle').click(function() {
+
     $('#numRoomsCollapse').toggle(100);
     $('#numRoomsValue').toggle(100);
+
+    var min = $('#min-rooms').val();
+    var max = $('#max-rooms').val();
+
+    if (min == max ) $('#numRoomsValue').text(min);
+    else $('#numRoomsValue').text(min + ' til ' + max);
+
   });
 
   $('#houseTypeToggle').click(function() {
     $('#houseTypeCollapse').toggle(100);
-    $('#houseTypeValue').toggle(100);
+    $('#houseTypeValue').toggle(100).text('');
+
+    $('input:checkbox[class=houseTypeInput]:checked').each(function() {
+      $('#houseTypeValue').append(' ' + $(this).val());
+      console.log($(this).val());
+    });
+    if ($('#houseTypeValue').text() == '') {
+      $('#houseTypeValue').text('Ekkert valið');
+    }
+
   });
 
   $('#squareFeetToggle').click(function() {
     $('#squareFeetCollapse').toggle(100);
     $('#squareFeetValue').toggle(100);
+
+    var min = $('#min-size').val();
+    var max = $('#max-size').val();
+
+    if (min == max ) $('#squareFeetValue').text(min);
+    else $('#squareFeetValue').text(min + ' til ' + max);
+
   });
 
 

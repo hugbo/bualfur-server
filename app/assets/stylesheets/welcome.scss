@@ -9,9 +9,11 @@
 // Fonts
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 $openSans: Open Sans, sans-serif;
 $raleway: Raleway, sans-serif;
+$oswald: Oswald, sans-serif;
 
 // Colors
 
@@ -35,7 +37,7 @@ $breakpointSmall: 800px;
 //===============
 
 * {
-  font-family: $openSans;
+  font-family: $oswald;
 }
 
 div, p {
@@ -77,8 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 // Search container
 
 span.hiddenValue {
-  color: #333333;
-  background-color: #ffffff;
+  background-color: lighten($blue, 20%);
   padding: 0 2% 0 2%;
 }
 
@@ -88,6 +89,7 @@ span.hiddenValue {
   background-color: $blue;
   float: left;
   overflow-y: auto;
+  font-family: $oswald;
 
   * {
     margin: 5%;
@@ -211,8 +213,13 @@ span.hiddenValue {
   }
 
   tbody > tr:hover {
-    background-color: lighten($blue, 10%);
+    background: linear-gradient(to bottom, lighten($blue, 5%),
+    lighten($blue, 15%), lighten($blue, 5%));
     cursor: pointer;
+    outline: solid;
+    outline-color: #ffffff;
+    outline-width: thin;
+    outline-offset: -2%;
   }
 
 }
