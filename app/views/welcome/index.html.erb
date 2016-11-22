@@ -3,6 +3,10 @@
     <h1> Please login before trying to create a listing</h1>
   <% end %>
 
+  <% if flash[:error] %>
+    <h1><%= flash[:error] %></h1>  
+  <% end %>
+
     <div class="search">
         <label for="search" class="search"><span class="pseudoLink" id="searchToggle">LEIT</span>
         <span id="searchValue" class="hiddenValue" style="display: none">Placeholder</span>

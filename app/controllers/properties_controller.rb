@@ -29,7 +29,7 @@ class PropertiesController < ApplicationController
     # Handler for request to create new property in database
     def new
       if !(current_user.present?)
-        redirect_to root_path(:unauthorized_creation => true)
+        redirect_to root_path, flash: {error: "You need to be logged in to create listings"}
       end
     end
 

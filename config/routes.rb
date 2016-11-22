@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'profile/my_properties'
 
+  get 'profile/:id', to: 'profile#show_profile'
+
   post 'properties/search'
 
   post 'properties/edit'
