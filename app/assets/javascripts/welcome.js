@@ -23,7 +23,7 @@ var searchInfo = {
     }).get();
   },
 
-  squareFeet : function() {
+  squareMeters : function() {
     return {min: $('#min-size').val(), max: $('#max-size').val()};
   }
 }
@@ -34,16 +34,24 @@ $(function() {
     $('#search-button').click(function() {
 
         var valuesToSubmit = {
-            zipcode: searchInfo.postnumer().join(),
-            priceMin: searchInfo.verd().min,
-            priceMax: searchInfo.verd().max,
-            roomsMin: searchInfo.numRooms().min,
-            roomsMax: searchInfo.numRooms().max,
-            propertyType: searchInfo.houseType().join(),
-            squareFeetMin: searchInfo.squareFeet().min,
-            squareFeelMax: searchInfo.squareFeet().max
+            zipcode: searchInfo.postnumer(),
+            price_min: searchInfo.verd().min,
+            price_max: searchInfo.verd().max,
+            rooms_min: searchInfo.numRooms().min,
+            rooms_max: searchInfo.numRooms().max,
+            property_type: searchInfo.houseType(),
+            square_meters_min: searchInfo.squareMeters().min,
+            square_meters_max: searchInfo.squareMeters().max
         }
-        console.log(valuesToSubmit);
+
+        if (valuesToSubmit['zipcode'].length == 0) {
+          valuesToSubmit['zipcode'] = '';
+        }
+
+        if (valuesToSubmit['property_type'].length == 0) {
+          valuesToSubmit['property_type'] = '';
+        }
+
         performSearch(valuesToSubmit);
         return false; // prevents normal behaviour
     });
@@ -64,12 +72,14 @@ function initMap() {
     map = new google.maps.Map($('#map').get(0), {});
 
     var defaultValues = {
-        zipcode: "",
-        priceMin: "",
-        priceMax: "",
-        roomsMin: "",
-        roomsMax: "",
-        propertyType: ""
+      zipcode: '',
+      price_min: '',
+      price_max: '',
+      rooms_min: '',
+      rooms_max: '',
+      property_type: '',
+      square_meters_min: '0',
+      square_meters_max: '0'
     }
 
     performSearch(defaultValues);
@@ -133,7 +143,6 @@ function updatePropertyList(data) {
 
       $(function() {
         $('.propertyRow').click(function() {
-          console.log('ayy');
           window.location = $(this).data('url');
         });
       });
@@ -275,12 +284,12 @@ $(function() {
     }
     $('#searchValue').append(' | ');
 
-    var squareFeet = searchInfo.squareFeet();
+    var squareMeters = searchInfo.squareMeters();
     $('#searchValue').append('Fermetrar: ');
-    if (squareFeet.min === squareFeet.max ) {
-      $('#searchValue').append(squareFeet.min);
+    if (squareMeters.min === squareMeters.max ) {
+      $('#searchValue').append(squareMeters.min);
     }
-    else $('#searchValue').append(squareFeet.min + ' til ' + SquareFeet.max);
+    else $('#searchValue').append(squareMeters.min + ' til ' + squareMeters.max);
 
   });
 
@@ -348,16 +357,16 @@ $(function() {
 
   });
 
-  $('#squareFeetToggle').click(function() {
-    $('#squareFeetCollapse').toggle(100);
-    $('#squareFeetValue').toggle(100);
+  $('#squareMetersToggle').click(function() {
+    $('#squareMetersCollapse').toggle(100);
+    $('#squareMetersValue').toggle(100);
 
-    var squareFeet = searchInfo.squareFeet();
+    var squareMeters = searchInfo.squareMeters();
 
-    if (squareFeet.min === squareFeet.max ) {
-      $('#squareFeetValue').text(squareFeet.min);
+    if (squareMeters.min === squareMeters.max ) {
+      $('#squareMetersValue').text(squareMeters.min);
     }
-    else $('#squareFeetValue').text(squareFeet.min + ' til ' + SquareFeet.max);
+    else $('#squareMetersValue').text(squareMeters.min + ' til ' + squareMeters.max);
 
   });
 
