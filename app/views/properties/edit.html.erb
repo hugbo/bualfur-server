@@ -69,4 +69,6 @@
     <%= f.submit  "Update"%>
 </p>
 
+<%= link_to 'Delete', @property_to_edit, method: :delete, confirm: "This cannot be undone" %>
+
 <% end %>

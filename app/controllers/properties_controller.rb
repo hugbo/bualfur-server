@@ -10,6 +10,9 @@ class PropertiesController < ApplicationController
     end
 
     def destroy
+      @property = Property.find(params[:id])
+      @property.destroy
+      redirect_to properties_my_properties_path
     end
 
     # Handler for dealing with
@@ -54,8 +57,6 @@ class PropertiesController < ApplicationController
 
     def update
       @property_to_update = Property.find(params[:id])
-      puts params[:property][:address]
-
       if @property_to_update.update_attributes(property_params)
         redirect_to(:action => 'show')
       else
