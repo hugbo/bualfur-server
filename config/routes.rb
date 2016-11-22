@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  get 'properties/my_properties'
+  get 'profile/my_properties'
 
   post 'properties/search'
 
