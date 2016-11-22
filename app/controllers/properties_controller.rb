@@ -2,22 +2,6 @@ class PropertiesController < ApplicationController
 
     # functions defined from rails routes
 
-    def index
-    end
-
-    def show
-        @property = Property.find(params[:id])
-    end
-
-    def new
-      if !(current_user.present?)
-        redirect_to root_path(:unauthorized_creation => true)
-      end
-    end
-
-    def edit
-    end
-
     def create
         @property = Property.new(property_params)
         @property.landlord = current_user
@@ -26,10 +10,24 @@ class PropertiesController < ApplicationController
         redirect_to @property
     end
 
-    def update
+    def destroy
     end
 
-    def destroy
+    def edit
+    end
+
+    def index
+    end
+
+    def new
+      if !(current_user.present?)
+        redirect_to root_path(:unauthorized_creation => true)
+      end
+    end
+
+    def my_properties
+      @user_id = current_user.id
+      @properties = Property.where(:uid => @user_id)
     end
 
     def search
@@ -42,7 +40,13 @@ class PropertiesController < ApplicationController
         else
           @properties = Property.all
         end
+    end
 
+    def show
+        @property = Property.find(params[:id])
+    end
+
+    def update
     end
 
     private
