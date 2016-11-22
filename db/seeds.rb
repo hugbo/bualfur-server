@@ -9,7 +9,8 @@
 User.delete_all
 
 User.create!(first_name: "Pepe", provider: "facebook", uid: "10210810816927",
-  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current)
+  created_at: DateTime.new(2001,2,3,4,5,6), updated_at: DateTime.current,
+  url: "https://www.facebook.com/PepeThaFrog/")
 
 Property.delete_all
 
