@@ -4,8 +4,12 @@ class ProfileController < ApplicationController
     if current_user == nil
       redirect_to root_path, flash: {error: "You need to be logged in to do that!"}
     else
-      @user = User.find(params[:id])
-      @properties = Property.where(:uid => @user.id)
+      begin
+        @user = User.find(params[:id])
+        @properties = Property.where(:uid => @user.id)
+      rescue
+        redirect_to root_path, flash: {error: "User does not exist"}
+      end
     end
   end
 

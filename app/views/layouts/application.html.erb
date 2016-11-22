@@ -16,6 +16,7 @@
                         <li id="avatar"><%= image_tag current_user.image_url, alt: current_user.first_name %></li>
                         <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
                         <li><%= link_to 'Create listing', '/properties/new' %></li>
+                        <li><%= link_to 'Profile', controller: "profile", action: "show_profile", id: current_user.id %></li>                
                     </ul>
                 <% else %>
                     <ul class="nav navbar-nav">

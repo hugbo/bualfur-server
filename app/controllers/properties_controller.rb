@@ -47,7 +47,11 @@ class PropertiesController < ApplicationController
     end
 
     def show
+      begin
         @property = Property.find(params[:id])
+      rescue
+        redirect_to root_path, flash: {error: "Property does not exist"}
+      end
     end
 
     def update
