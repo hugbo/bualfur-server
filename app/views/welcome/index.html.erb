@@ -4,24 +4,24 @@
   <% end %>
 
     <div class="search">
-        <label for="search" class="search"><span id="searchToggle">LEIT</span>
+        <label for="search" class="search"><span class="pseudoLink" id="searchToggle">LEIT</span>
         <span id="searchValue" class="hiddenValue" style="display: none">Placeholder</span>
         </label>
         <div class="input-group">
 
 
           <div id="postnumer" class="postnumer">
-            <p id="postnumerToggle">Póstnúmer:
+            <p class="pseudoLink" id="postnumerToggle">Póstnúmer:
             <span id="postnumerValue" class="hiddenValue" style="display: none">Placeholder</span>
             </p>
             <div id="postnumerCollapse">
               <form>
-                  <input type="checkbox" name="zipALL" id="zipALL"
+                  <input type="checkbox" name="zipALL" id="zipALL" class="pseudoLink"
                   onchange="handleChange(this)">Öll póstnúmer</input><br>
 
                   <input type="checkbox" name="REY" class="zipMANY"
                     onchange="handleChange(this)">
-                    <span id="toggleREY">Reykjavík</span>
+                  <span class="pseudoLink" id="toggleREY">Reykjavík</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseREY" style="display: none">
                     <input type="checkbox" class="hasValue zipREY"
@@ -54,7 +54,7 @@
 
                   <input type="checkbox" name="SEL" class="zipMANY"
                   onchange="handleChange(this)">
-                  <span id="toggleSEL">Seltjarnarnes</span>
+                  <span class="pseudoLink" id="toggleSEL">Seltjarnarnes</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseSEL" style="display: none">
                     <input type="checkbox" class="hasValue zipSEL"
@@ -63,7 +63,7 @@
 
                   <input type="checkbox" name="KOP" class="zipMANY"
                   onchange="handleChange(this)">
-                  <span id="toggleKOP">Kópavogur</span>
+                  <span class="pseudoLink" id="toggleKOP">Kópavogur</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseKOP" style="display: none">
                     <input type="checkbox" class="hasValue zipKOP"
@@ -76,7 +76,7 @@
 
                   <input type="checkbox" name="GAR" class="zipMANY"
                   onchange="handleChange(this)">
-                  <span id="toggleGAR">Garðabær</span>
+                  <span class="pseudoLink" id="toggleGAR">Garðabær</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseGAR" style="display: none">
                     <input type="checkbox" class="hasValue zipGAR"
@@ -87,7 +87,7 @@
 
                   <input type="checkbox" name="HAF" class="zipMANY"
                   onchange="handleChange(this)">
-                  <span id="toggleHAF">Hafnarfjörður</span>
+                  <span class="pseudoLink" id="toggleHAF">Hafnarfjörður</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseHAF" style="display: none">
                     <input type="checkbox" class="hasValue zipHAF"
@@ -98,7 +98,7 @@
 
                   <input type="checkbox" name="MOS" class="zipMANY"
                   onchange="handleChange(this)">
-                  <span id="toggleMOS">Mosfellsbær</span>
+                  <span class="pseudoLink" id="toggleMOS">Mosfellsbær</span>
                   </input><br>
                   <div class="zipCollapse" id="collapseMOS" style="display: none">
                     <input type="checkbox" class="hasValue zipMOS"
@@ -114,7 +114,7 @@
           </div>
 
           <div id="otherInputs" class="otherInputs">
-            <p id="verdToggle">Verð:
+            <p class="pseudoLink" id="verdToggle">Verð:
             <span id="verdValue" class="hiddenValue" style="display: none">Placeholder</span>
             </p>
             <div id="verdCollapse">
@@ -122,7 +122,7 @@
               <input type="text" placeholder="Max" id="priceMax"><br>
             </div>
 
-            <p id="numRoomsToggle">Fjöldi herbergja:
+            <p class="pseudoLink" id="numRoomsToggle">Fjöldi herbergja:
             <span id="numRoomsValue" class="hiddenValue" style="display: none">Placeholder</span>
             </p>
             <div id="numRoomsCollapse">
@@ -147,7 +147,7 @@
             </div>
 
 
-            <p id="houseTypeToggle"> Tegund húsnæðis:
+            <p class="pseudoLink" id="houseTypeToggle"> Tegund húsnæðis:
             <span id="houseTypeValue" class="hiddenValue" style="display: none">Placeholder</span>
             </p>
             <div id="houseTypeCollapse">
@@ -158,7 +158,7 @@
               </form>
             </div>
 
-            <p id="squareFeetToggle">Fermetrar:
+            <p class="pseudoLink" id="squareFeetToggle">Fermetrar:
             <span id="squareFeetValue" class="hiddenValue" style="display: none">Placeholder</span>
             </p>
             <div id="squareFeetCollapse">

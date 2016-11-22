@@ -63,17 +63,68 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+.pseudoLink {
+  cursor: pointer;
+}
+
 //============
 // Containers
 //============
 
 // Navbar
 
-#navbar {
-  background-color: $purple;
-  width: 100%;
+.navbar {
   height: $navbarHeight;
-  display: inline-block;
+  background-color: $purple;
+}
+
+#navbar {
+  width: 100%;
+  height: 100%;
+  display: table;
+
+  ul {
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: table-cell;
+  }
+
+  li {
+    float: left;
+    height: 100%;
+    width: 8em;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  li#avatar {
+    width: auto;
+  }
+
+  a:hover {
+    background-color: lighten($purple, 20%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 25%;
+
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  img {
+    height: 100%;
+  }
 }
 
 // Search container
@@ -220,6 +271,7 @@ span.hiddenValue {
     outline-color: #ffffff;
     outline-width: thin;
     outline-offset: -2%;
+    transition: 0.3s;
   }
 
 }

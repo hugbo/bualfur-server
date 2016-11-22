@@ -171,7 +171,21 @@ $(function() {
     console.log(min + ' > ' + max + ': ' + (+min > +max));
 
     if (+min > +max) $('#min-size').val(max);
-  })
+  });
+
+  $('#min-rooms').change(function() {
+    var min = $('#min-rooms').val();
+    var max = $('#max-rooms').val();
+
+    if (+min > +max) $('#max-rooms').val(min);
+  });
+
+  $('#max-rooms').change(function() {
+    var min = $('#min-rooms').val();
+    var max = $('#max-rooms').val();
+
+    if (+min > +max) $('#min-rooms').val(max);
+  });
 
 });
 
