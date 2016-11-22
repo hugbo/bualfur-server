@@ -1,7 +1,9 @@
 class Property < ApplicationRecord
+  # Database associations
   belongs_to :landlord, class_name: 'User', foreign_key: "uid"
   belongs_to :tenant, class_name: 'User', optional: true
 
+  # Method to search database for properties meeting criteria
   def self.search(criteria)
     # local variables
     wildcard = '%'

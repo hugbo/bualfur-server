@@ -42,3 +42,13 @@
     </div>
 
 </div>
+
+<% if current_user.id == @property.landlord.id %>
+  <h2>This is your property</h2>
+<!--
+  <%= form_for @property, url: edit_property_path(@property) do |p| %>
+    <p><%= p.submit %></p>
+  <% end %>
+-->
+  <%= link_to "Edit or Delete", edit_property_path(@property)%>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'properties/search'
 
+  post 'properties/edit'
+
   resources :properties
 
   get '/auth/:provider/callback', to: 'sessions#create'
