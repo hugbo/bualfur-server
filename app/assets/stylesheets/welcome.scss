@@ -19,7 +19,7 @@ $oswald: Oswald, sans-serif;
 
 $blue: #062F4F;
 $orange: #ee7600;
-$purple: #813772;
+$purple: lighten($blue, 30%);
 $embers: #882601;
 
 // Containers
@@ -129,6 +129,10 @@ h1, h2, h3, h4, h5, h6 {
 
 // Search container
 
+.search {
+  margin: 5% 0 5% 5% !important;
+}
+
 span.hiddenValue {
   background-color: lighten($blue, 20%);
   padding: 0 2% 0 2%;
@@ -171,6 +175,14 @@ span.hiddenValue {
   @media screen and (max-width: $breakpointLeftcontainer) {
     min-height: 0;
   }
+
+  @media screen and (max-width: $breakpointMap) {
+    min-height: 30em;
+  }
+
+  @media screen and (max-width: $breakpointSmall) {
+    min-height: 0;
+  }
 }
 
 .postnumer {
@@ -185,7 +197,6 @@ span.hiddenValue {
   // Media queries
 
   @media screen and (max-width: $breakpointLeftcontainer) {
-    width: 100%;
     float: none;
 
     input {
@@ -196,6 +207,31 @@ span.hiddenValue {
       margin: 1.25%;
     }
 
+  }
+
+  @media screen and (max-width: $breakpointMap) {
+    float: left;
+
+    input {
+      margin: 5%;
+    }
+
+    input.hasValue {
+      margin: 2.5%;
+    }
+  }
+
+  @media screen and (max-width: $breakpointSmall) {
+    float: none;
+    clear: right;
+
+    input {
+      margin: 2.5%;
+    }
+
+    input.hasValue {
+      margin: 1.25%;
+    }
   }
 
 }
