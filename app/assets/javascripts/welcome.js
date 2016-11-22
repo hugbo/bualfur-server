@@ -2,18 +2,48 @@ var map;
 var markers = [];
 var bounds = [];
 
+var searchInfo = {
+  postnumer : function() {
+    return $('input:checkbox:checked.hasValue').map(function() {
+      return ($(this).val());
+    }).get();
+  },
+
+  verd : function() {
+    return {min: $('#priceMin').val(), max: $('#priceMax').val()};
+  },
+
+  numRooms : function() {
+    return {min: $('#min-rooms').val(), max: $('#max-rooms').val()};
+  },
+
+  houseType : function() {
+    return $('input:checkbox:checked.houseTypeInput').map(function () {
+      return ($(this).val());
+    }).get();
+  },
+
+  squareFeet : function() {
+    return {min: $('#min-size').val(), max: $('#max-size').val()};
+  }
+}
+
 $(function() {
     console.log("ready!");
 
     $('#search-button').click(function() {
+
         var valuesToSubmit = {
-            zipcode: $('#zipcode').val(),
-            priceMin: $('#priceMin').val(),
-            priceMax: $('#priceMax').val(),
-            roomsMin: $('#roomsMin').val(),
-            roomsMax: $('#roomsMax').val(),
-            propertyType: $('#propertyType').val()
+            zipcode: searchInfo.postnumer().join(),
+            priceMin: searchInfo.verd().min,
+            priceMax: searchInfo.verd().max,
+            roomsMin: searchInfo.numRooms().min,
+            roomsMax: searchInfo.numRooms().max,
+            propertyType: searchInfo.houseType().join(),
+            squareFeetMin: searchInfo.squareFeet().min,
+            squareFeelMax: searchInfo.squareFeet().max
         }
+        console.log(valuesToSubmit);
         performSearch(valuesToSubmit);
         return false; // prevents normal behaviour
     });
@@ -155,31 +185,7 @@ function handleChange(checkbox) {
 
 // Search field logic
 
-var searchInfo = {
-  postnumer : function() {
-    return $('input:checkbox:checked.hasValue').map(function() {
-      return ($(this).val());
-    }).get();
-  },
 
-  verd : function() {
-    return {min: $('#priceMin').val(), max: $('#priceMax').val()};
-  },
-
-  numRooms : function() {
-    return {min: $('#min-rooms').val(), max: $('#max-rooms').val()};
-  },
-
-  houseType : function() {
-    return $('input:checkbox:checked.houseTypeInput').map(function () {
-      return ($(this).val());
-    }).get();
-  },
-
-  squareFeet : function() {
-    return {min: $('#min-size').val(), max: $('#max-size').val()};
-  }
-}
 
 $(function() {
 
