@@ -5,6 +5,7 @@ class ProfileController < ApplicationController
       redirect_to root_path, flash: {error: "You need to be logged in to do that!"}
     else
       @user = User.find(params[:id])
+      @properties = Property.where(:uid => @user.id)
     end
   end
 
@@ -15,10 +16,4 @@ class ProfileController < ApplicationController
     end
   end
 
-
-  # Fetches property listings of logged in user
-  def my_properties
-    @user_id = current_user.id
-    @properties = Property.where(:uid => @user_id)
-  end
 end
