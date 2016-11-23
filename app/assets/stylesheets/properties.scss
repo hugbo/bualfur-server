@@ -1,3 +1,30 @@
 // Place all the styles related to the properties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Variables
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
+// Containers
+
+#propertylistingTitle {
+  width: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#propertyListingLeft {
+  width: 40%;
+}
+
+#propertyListingRight {
+  width: 40%;
+}
