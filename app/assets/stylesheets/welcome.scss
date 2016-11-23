@@ -24,7 +24,7 @@ $embers: #882601;
 
 // Containers
 
-$navbarHeight: 10%;
+$navbarHeight: 5%;
 
 // Media queries
 
@@ -50,7 +50,7 @@ body, html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $raleway;
+  font-family: $oswald;
 }
 
 .container {
@@ -95,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
   li {
     float: left;
     height: 100%;
-    width: 8em;
+    width: 6em;
     display: table-cell;
     vertical-align: middle;
   }
@@ -116,7 +116,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding-top: 25%;
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
 
     text-align: center;
     transition: 0.3s;

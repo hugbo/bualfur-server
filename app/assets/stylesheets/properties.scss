@@ -1,3 +1,40 @@
 // Place all the styles related to the properties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Variables
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
+// Containers
+
+#propertylistinTitle {
+  width: 100%;
+}
+
+#propertyListingLeft {
+  float: left;
+  width: 50%;
+  margin: 0;
+  height: 50em;
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    float: none;
+  }
+
+  @media screen and (max-width: $breakpointMap) {
+    float: left;
+  }
+
+  @media screen and (max-width: $breakpointSmall) {
+    float: none;
+  }
+}
+
+#propertyListingRight {
+  width: auto;
+  padding-top: 2.5%;
+  height: 50em;
+}

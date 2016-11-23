@@ -194,8 +194,6 @@ function handleChange(checkbox) {
 
 // Search field logic
 
-
-
 $(function() {
 
   $('#min-size').change(function() {

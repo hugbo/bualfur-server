@@ -1,7 +1,4 @@
 <div class="leftContainer container">
-  <% if params[:unauthorized_creation] %>
-    <h1> Please login before trying to create a listing</h1>
-  <% end %>
 
   <% if flash[:error] %>
     <h1><%= flash[:error] %></h1>
