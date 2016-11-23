@@ -55,7 +55,10 @@
     <p>
         <%= f.label :property_type, "Tegund húsnæðis" %>
         <br>
-        <%= f.text_field :property_type %>
+        <%= f.select(:property_type,
+        options_for_select([['Einbýlishús', 'Einbýlishús'],
+        ['Fjölbýlishús', 'Fjölbýlishús'],
+        ['Parhús', 'Fjölbýlishús']])) %>
     </p>
 
     <p>
