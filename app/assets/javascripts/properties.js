@@ -80,3 +80,20 @@ function getGeoLocation(searchQuery) {
       newPropertyMap.setZoom(17);
     });
 }
+
+// Photo gallery logic
+
+$(document).ready(function() {
+  $('.imageDisplay').click(function() {
+    $('.showcasedImage').attr('src', $(this).children('img').attr('src'));
+    $('.imageShowcase').show(500);
+    $(document).mouseup(function(e) {
+      var container = $('.imageShowcase');
+
+      if (!container.is(e.target) &&
+          container.has(e.target).length === 0) {
+          container.hide(500);   
+        }
+    });
+  });
+});
