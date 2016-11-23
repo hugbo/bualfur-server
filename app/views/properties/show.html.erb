@@ -2,7 +2,7 @@
 
 <div class="flexContainerTitle">
   <% if @property.image1? %>
-   <img src="<%= @property.image1.url %>" class="mainImageShow"/>
+   <img src="<%= @property.image1.url %>" class="mainImageShow imageClick"/>
   <% end %>
   <div id="propertyTitle">
     <h1 class="addressTitle"><%= @property.address %></h1>
@@ -65,7 +65,7 @@
 <div class="rightContainer container smallMapContainer">
 
     <div class="imageContainer">
-      <div class="imageDisplay">
+      <div class="imageDisplay imageClick">
         <% if @property.image2? %>
           <img src="<%= @property.image2.url %>" class="sideImageShow"/>
           <span class="imageOverlay"><h2>STÆKKA</h2></span>
@@ -74,7 +74,7 @@
         <% end %>
       </div>
 
-      <div class="imageDisplay">
+      <div class="imageDisplay imageClick">
         <% if @property.image3? %>
           <img src="<%= @property.image3.url %>" class="sideImageShow"/>
           <span class="imageOverlay"><h2>STÆKKA</h2></span>
@@ -83,7 +83,7 @@
         <% end %>
       </div>
 
-      <div class="imageDisplay">
+      <div class="imageDisplay imageClick">
         <% if @property.image4? %>
           <img src="<%= @property.image4.url %>" class="sideImageShow"/>
           <span class="imageOverlay"><h2>STÆKKA</h2></span>

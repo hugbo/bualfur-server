@@ -97,10 +97,10 @@ function initShowPropertiesMap(){
 // Photo gallery logic
 
 $(document).ready(function() {
-  $('.imageDisplay').click(function() {
+  $('.imageClick').click(function() {
 
-    var showcasedImageSrc = $('.showcasedImage').attr('src') || "asdf";
-    var newImageSrc = $(this).children('img').attr('src');
+    var showcasedImageSrc = $('.showcasedImage').attr('src') || "";
+    var newImageSrc = $(this).children('img').attr('src') || $(this).attr('src');
 
     if (showcasedImageSrc === newImageSrc) {
       $('.imageShowcase').toggle(500);
