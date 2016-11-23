@@ -81,6 +81,12 @@ function getGeoLocation(searchQuery) {
     });
 }
 
+
+
+function initShowPropertiesMap(){
+  //tmp
+}
+
 // Photo gallery logic
 
 $(document).ready(function() {
@@ -92,7 +98,7 @@ $(document).ready(function() {
 
       if (!container.is(e.target) &&
           container.has(e.target).length === 0) {
-          container.hide(500);   
+          container.hide(500);
         }
     });
   });
