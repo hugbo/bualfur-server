@@ -10,31 +10,21 @@ $breakpointSmall: 800px;
 
 // Containers
 
-#propertylistinTitle {
+#propertylistingTitle {
   width: 100%;
 }
 
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 #propertyListingLeft {
-  float: left;
-  width: 50%;
-  margin: 0;
-  height: 50em;
-
-  @media screen and (max-width: $breakpointLeftcontainer) {
-    float: none;
-  }
-
-  @media screen and (max-width: $breakpointMap) {
-    float: left;
-  }
-
-  @media screen and (max-width: $breakpointSmall) {
-    float: none;
-  }
+  width: 40%;
 }
 
 #propertyListingRight {
-  width: auto;
-  padding-top: 2.5%;
-  height: 50em;
+  width: 40%;
 }

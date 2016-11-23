@@ -1,11 +1,10 @@
 <div class="leftContainer container">
   <div id="porpertyListingTitle">
-    <h1>Add new property</h1>
-    <h2>Please fill out the form</h2>
+    <h1>Please fill out the form</h1>
   </div>
 
   <%= form_for :property, url: properties_path do |f| %>
-
+<div class="flexContainer">
   <div id="propertyListingLeft">
 
     <p>
@@ -73,12 +72,13 @@
 
   </div>
 
-
+</div>
   <p>
       <%= f.submit  %>
   </p>
 
   <% end %>
+
 </div>
 
 <div class="rightContainer container">
