@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   # Database associations
   has_many :owned_property, :class_name => 'Property', :foreign_key => "uid"
   has_one :rented_property, :class_name => 'Property', :foreign_key => "uid"

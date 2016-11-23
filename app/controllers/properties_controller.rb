@@ -5,9 +5,6 @@ class PropertiesController < ApplicationController
         @property = Property.new(property_params)
         @property.landlord = current_user
 
-        puts "Hash seed: "
-        puts ENV["hashing_key"]
-
         @property.save
         redirect_to @property
     end
@@ -71,6 +68,6 @@ class PropertiesController < ApplicationController
     def property_params
         params.require(:property).permit(:address, :zipcode, :city, :price,
           :size, :num_bedrooms, :num_bathrooms, :property_type, :lat, :lon,
-          :image1, :image2, :image3, :image4)
+          :image1, :image2, :image3, :image4, :description)
     end
 end
