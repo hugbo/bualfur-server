@@ -98,15 +98,30 @@ function initShowPropertiesMap(){
 
 $(document).ready(function() {
   $('.imageDisplay').click(function() {
-    $('.showcasedImage').attr('src', $(this).children('img').attr('src'));
-    $('.imageShowcase').show(500);
-    $(document).mouseup(function(e) {
-      var container = $('.imageShowcase');
 
-      if (!container.is(e.target) &&
-          container.has(e.target).length === 0) {
-          container.hide(500);
+    var showcasedImageSrc = $('.showcasedImage').attr('src') || "asdf";
+    var newImageSrc = $(this).children('img').attr('src');
+
+    if (showcasedImageSrc === newImageSrc) {
+      $('.imageShowcase').toggle(500);
+    } else {
+      $('.imageShowcase').hide(500, function() {
+        $('.showcasedImage').attr('src', newImageSrc);
+        $('.imageShowcase').show(500);
+      });
+    }
+
+    $(document).mouseup(function(e) {
+      var imageShowcase = $('.imageShowcase');
+      var imageDisplay = $('.imageDisplay');
+
+      if (!imageShowcase.is(e.target)
+      && imageShowcase.has(e.target).length === 0
+      && !imageDisplay.is(e.target)
+      && imageDisplay.has(e.target).length === 0) {
+          imageShowcase.hide(500);
         }
     });
+
   });
 });
