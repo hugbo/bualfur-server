@@ -84,6 +84,13 @@ function getGeoLocation(searchQuery) {
 
 
 function initShowPropertiesMap(){
+  var location = {
+    lat: parseFloat($('#propertyShowDesc').attr("lat")),
+    lng: parseFloat($('#propertyShowDesc').attr("lng"))
+  };
+  var map = new google.maps.Map($('#map').get(0), {center: location, zoom: 16});
+  var marker = new google.maps.Marker({position: location, map: map});
+  console.log(location);
   //tmp
 }
 

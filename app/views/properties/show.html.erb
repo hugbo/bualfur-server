@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div id="propertyShowDesc">
+  <div id="propertyShowDesc" lat= <%= @property.lat %> lng= <%= @property.lon %>>
       <h3>Lýsing</h3>
       <p><%= @property.description %></p>
   </div>
@@ -94,7 +94,7 @@
     </div>
 
     <div id="map" class="smallMap"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initShowPropertiesMap"></script>
 </div>
 
 <div class="imageShowcase">
