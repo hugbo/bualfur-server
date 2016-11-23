@@ -1,65 +1,79 @@
-<h1>Property</h1>
+<div class="leftContainer container">
+<% if @property.image1? %>
+ <img src="<%= @property.image1.url %>"/>
+<% end %>
+<h1><%= @property.address %></h1>
 
-<div>
-  <div>
-      <h3>Address</h3>
-      <p><%= @property.address %></p>
+<div class="flexContainer">
+
+  <div class="flexChild">
+    <div>
+        <h3>Póstnúmer</h3>
+        <p><%= @property.zipcode  %></p>
+    </div>
+
+    <div>
+        <h3>Borg/Bær</h3>
+        <p><%= @property.city %></p>
+    </div>
+
+    <div>
+        <h3>Verð</h3>
+        <p><%= @property.price %></p>
+    </div>
+
+    <div>
+        <h3>Fermetrar</h3>
+        <p><%= @property.size %></p>
+    </div>
   </div>
 
-  <div>
-      <h3>Zipcode</h3>
-      <p><%= @property.zipcode  %></p>
+  <div class="flexChild">
+    <div>
+        <h3>Fjöldi svefnherbergja</h3>
+        <p><%= @property.num_bedrooms %></p>
+    </div>
+
+    <div>
+        <h3>Fjöldi barherbergja</h3>
+        <p><%= @property.num_bathrooms %></p>
+    </div>
+
+    <div>
+        <h3>Tegund húsnæðis</h3>
+        <p><%= @property.property_type %></p>
+    </div>
   </div>
 
-  <div>
-      <h3>City</h3>
-      <p><%= @property.city %></p>
+  <div id="propertyShowDesc">
+      <h3>Lýsing</h3>
+      <p><%= @property.description %></p>
   </div>
-
-  <div>
-      <h3>Price</h3>
-      <p><%= @property.price %></p>
-  </div>
-
-  <div>
-      <h3>Size</h3>
-      <p><%= @property.size %></p>
-  </div>
-
-  <div>
-      <h3>Number of bedrooms</h3>
-      <p><%= @property.num_bedrooms %></p>
-  </div>
-
-  <div>
-      <h3>Number of bathrooms</h3>
-      <p><%= @property.num_bathrooms %></p>
-  </div>
-
-  <div>
-      <h3>Type of property</h3>
-      <p><%= @property.property_type %></p>
-  </div>
-
-  <% if @property.image1? %>
-   <img src="<%= @property.image1.url %>"/>
-   <% end %>
-
-  <% if @property.image2? %>
-    <img src="<%= @property.image2.url %>"/>
-  <% end %>
-
-  <% if @property.image3? %>
-    <img src="<%= @property.image3.url %>"/>
-  <% end %>
-
-  <% if @property.image4? %>
-    <img src="<%= @property.image4.url %>"/>
-  <% end %>
 
 </div>
 
 <% if current_user.id == @property.landlord.id %>
-  <h2>This is your property</h2>
-  <%= link_to "Edit or Delete", edit_property_path(@property)%>
+  <h2>Þetta er þitt eigið húsnæði</h2>
+  <%= link_to "Breyta/Eyða", edit_property_path(@property)%>
 <% end %>
+</div>
+
+<div class="rightContainer container smallMapContainer">
+
+    <div class="imageContainer">
+      <% if @property.image2? %>
+        <img src="<%= @property.image2.url %>"/>
+      <% end %>
+
+      <% if @property.image3? %>
+        <img src="<%= @property.image3.url %>"/>
+      <% end %>
+
+      <% if @property.image4? %>
+        <img src="<%= @property.image4.url %>"/>
+      <% end %>
+    </div>
+
+    <div id="map" class="smallMap"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
+</div>

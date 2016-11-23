@@ -20,7 +20,7 @@ $oswald: Oswald, sans-serif;
 $blue: #062F4F;
 $orange: #ee7600;
 $purple: lighten($blue, 30%);
-$embers: #882601;
+$embers: lighten($blue, 15%);
 
 // Containers
 
