@@ -56,15 +56,6 @@ $(function() {
         performSearch(valuesToSubmit);
         return false; // prevents normal behaviour
     });
-
-    // get CSRF token to make secure POSTS to server
-    var token = $('meta[name="csrf-token"]').attr('content');
-    $.ajaxSetup({
-      beforeSend: function(xhr){
-        xhr.setRequestHeader('X-CSRF-TOken', token);
-      }
-    });
-
 });
 
 function initMap() {
@@ -164,9 +155,16 @@ function updatePropertyList(data) {
 }
 
 function performSearch(query) {
+
+    var token = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', token);
+        }
+    });
+
     $.ajax({
-        type: "POST",
-        url: "/properties/search", //submits it to the given url of the form
+        type: "POST", url: "/properties/search", //submits it to the given url of the form
         data: {
             search: query
         },
@@ -176,7 +174,6 @@ function performSearch(query) {
         updateMap(json);
     });
 }
-
 
 // Function for attaching info windows to markers
 function setMarkerInfo(markers) {
