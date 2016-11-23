@@ -187,7 +187,7 @@ function setMarkerInfo(markers) {
     'Póstnúmer: ' + markers[i].propertyInfo.zipcode + '<br/>' +
     'Stærð: ' + markers[i].propertyInfo.size + 'fm <br/>' +
     'Fjöldi svefnherbergja: ' + markers[i].propertyInfo.rooms + '<br/>' +
-    'Leiga: ' + markers[i].propertyInfo.price + ' kr/mán <br/>' +
+    'Leiga: ' + markers[i].propertyInfo.price.toLocaleString('de-DE') + ' kr/mán <br/>' +
     '<a href="/properties/'+markers[i].propertyInfo.property_id + '">Skoða</a>' +
     '</p>'+
     '</div>';
@@ -241,6 +241,8 @@ function handleChange(checkbox) {
 }
 
 // Search field logic
+
+
 
 $(function() {
 
