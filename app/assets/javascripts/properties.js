@@ -80,3 +80,48 @@ function getGeoLocation(searchQuery) {
       newPropertyMap.setZoom(17);
     });
 }
+
+
+
+function initShowPropertiesMap(){
+  var location = {
+    lat: parseFloat($('#propertyShowDesc').attr("lat")),
+    lng: parseFloat($('#propertyShowDesc').attr("lng"))
+  };
+  var map = new google.maps.Map($('#map').get(0), {center: location, zoom: 16});
+  var marker = new google.maps.Marker({position: location, map: map});
+  console.log(location);
+  //tmp
+}
+
+// Photo gallery logic
+
+$(document).ready(function() {
+  $('.imageClick').click(function() {
+
+    var showcasedImageSrc = $('.showcasedImage').attr('src') || "";
+    var newImageSrc = $(this).children('img').attr('src') || $(this).attr('src');
+
+    if (showcasedImageSrc === newImageSrc) {
+      $('.imageShowcase').toggle(500);
+    } else {
+      $('.imageShowcase').hide(500, function() {
+        $('.showcasedImage').attr('src', newImageSrc);
+        $('.imageShowcase').show(500);
+      });
+    }
+
+    $(document).mouseup(function(e) {
+      var imageShowcase = $('.imageShowcase');
+      var imageDisplay = $('.imageDisplay');
+
+      if (!imageShowcase.is(e.target)
+      && imageShowcase.has(e.target).length === 0
+      && !imageDisplay.is(e.target)
+      && imageDisplay.has(e.target).length === 0) {
+          imageShowcase.hide(500);
+        }
+    });
+
+  });
+});
