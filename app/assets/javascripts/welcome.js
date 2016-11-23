@@ -1,6 +1,7 @@
 var map;
 var markers = [];
-var bounds = [];
+var currentInfoWindow = {};
+
 
 var searchInfo = {
   postnumer : function() {
@@ -103,7 +104,14 @@ function updateMap(data) {
       markers.push(new google.maps.Marker({
         position: data.properties[i].gpslocation,
         map: map,
-        title: data.properties[i].address
+        propertyInfo: {
+          address: data.properties[i].address,
+          zipcode: data.properties[i].zipcode,
+          size:    data.properties[i].size,
+          rooms:   data.properties[i].rooms,
+          price:   data.properties[i].price,
+          property_id:     data.properties[i].property_id
+        }
       }))
   }
 
@@ -118,6 +126,7 @@ function updateMap(data) {
   if(map.getZoom() > 16){
     map.setZoom(16);
   }
+  setMarkerInfo(markers);
 }
 
 function updatePropertyList(data) {
@@ -137,16 +146,19 @@ function updatePropertyList(data) {
               '<td>' + data.properties[i].zipcode + '</td>' +
               '<td>' + data.properties[i].size + '</td>' +
               '<td>' + data.properties[i].rooms + '</td>' +
-              '<td>' + data.properties[i].price + '</td>' +
+              // For some reason the icelandic locale string for numbers is wrong
+              // the german locale is used as they use periods as thousands
+              // separator
+              '<td>' + data.properties[i].price.toLocaleString('de-DE') + '</td>' +
               '</tr>');
       }
+
 
       $(function() {
         $('.propertyRow').click(function() {
           window.location = $(this).data('url');
         });
       });
-
     }
 
 }
@@ -164,6 +176,42 @@ function performSearch(query) {
         updateMap(json);
     });
 }
+
+
+// Function for attaching info windows to markers
+function setMarkerInfo(markers) {
+  for (var i = 0; i < markers.length; i++) {
+    var contentString = '<div class="markerContent">'+
+    '<p>'+
+    'Heimilisfang: ' + markers[i].propertyInfo.address + '<br/>' +
+    'Póstnúmer: ' + markers[i].propertyInfo.zipcode + '<br/>' +
+    'Stærð: ' + markers[i].propertyInfo.size + 'fm <br/>' +
+    'Fjöldi svefnherbergja: ' + markers[i].propertyInfo.rooms + '<br/>' +
+    'Leiga: ' + markers[i].propertyInfo.price + ' kr/mán <br/>' +
+    '<a href="/properties/'+markers[i].propertyInfo.property_id + '">Skoða</a>' +
+    '</p>'+
+    '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    markers[i].infowindow = infowindow;
+    attachMarkerListeners(i);
+  }
+
+}
+
+function attachMarkerListeners(i) {
+  google.maps.event.addListener(markers[i], 'click', function() {
+    if (currentInfoWindow.content !== undefined) {
+      currentInfoWindow.close();
+    }
+    this.infowindow.open(map, this);
+    currentInfoWindow = this.infowindow;
+  });
+}
+
+
 
 
 // Checkbox logic

@@ -48,6 +48,9 @@ class PropertiesController < ApplicationController
 
     def show
       begin
+        if !(current_user.present?)
+          redirect_to root_path, flash: {error: "You need to be logged in to view listings"}
+        end
         @property = Property.find(params[:id])
       rescue
         redirect_to root_path, flash: {error: "Property does not exist"}
