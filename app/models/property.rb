@@ -3,6 +3,17 @@ class Property < ApplicationRecord
   belongs_to :landlord, class_name: 'User', foreign_key: "uid"
   belongs_to :tenant, class_name: 'User', optional: true
 
+  # Paperclip gem assertions
+  @hash = ENV["HASH_SEED"]
+  has_attached_file :image1, url: "/photos/:hash.:extension", hash_secret: @hash
+  has_attached_file :image2, url: "/photos/:hash.:extension", hash_secret: @hash
+  has_attached_file :image3, url: "/photos/:hash.:extension", hash_secret: @hash
+  has_attached_file :image4, url: "/photos/:hash.:extension", hash_secret: @hash
+  validates_attachment :image1, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  validates_attachment :image2, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  validates_attachment :image3, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  validates_attachment :image4, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+
   # Method to search database for properties meeting criteria
   def self.search(criteria)
     # local variables

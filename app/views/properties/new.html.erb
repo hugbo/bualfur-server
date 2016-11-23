@@ -37,9 +37,6 @@
         <%= f.text_field :size %>
     </p>
 
-  </div>
-  <div id="propertyListingRight">
-
     <p>
         <%= f.label :num_bedrooms, "Number of Bedrooms" %>
         <br>
@@ -51,6 +48,9 @@
         <br>
         <%= f.text_field :num_bathrooms %>
     </p>
+
+  </div>
+  <div id="propertyListingRight">
 
     <p>
         <%= f.label :property_type, "Property Type" %>
@@ -68,6 +68,30 @@
       <%= f.label :lon, "Longitude" %>
         <br>
         <%= f.text_field :lon %>
+    </p>
+
+    <p>
+      <%= f.label :image1, "Main image" %>
+        <br>
+        <%= f.file_field :image1 %>
+    </p>
+
+    <p>
+      <%= f.label :image2, "Image 2" %>
+        <br>
+        <%= f.file_field :image2 %>
+    </p>
+
+    <p>
+      <%= f.label :image3, "Image 3" %>
+        <br>
+        <%= f.file_field :image3 %>
+    </p>
+
+    <p>
+      <%= f.label :image4, "Image 4" %>
+        <br>
+        <%= f.file_field :image4 %>
     </p>
 
   </div>

@@ -5,6 +5,9 @@ class PropertiesController < ApplicationController
         @property = Property.new(property_params)
         @property.landlord = current_user
 
+        puts "Hash seed: "
+        puts ENV["hashing_key"]
+
         @property.save
         redirect_to @property
     end
@@ -15,7 +18,7 @@ class PropertiesController < ApplicationController
       redirect_to properties_my_properties_path
     end
 
-    # Handler for dealing with
+    # Handler for dealing with request to edit property
     def edit
       @property_to_edit = Property.find(params[:id])
       if @property_to_edit.landlord != current_user
@@ -48,9 +51,6 @@ class PropertiesController < ApplicationController
 
     def show
       begin
-        if !(current_user.present?)
-          redirect_to root_path, flash: {error: "You need to be logged in to view listings"}
-        end
         @property = Property.find(params[:id])
       rescue
         redirect_to root_path, flash: {error: "Property does not exist"}
@@ -67,8 +67,10 @@ class PropertiesController < ApplicationController
     end
 
     private
-    # Private method for database obfuscation
+    # Private method for database validation
     def property_params
-        params.require(:property).permit(:address, :zipcode, :city, :price, :size, :num_bedrooms, :num_bathrooms, :property_type, :lat, :lon)
+        params.require(:property).permit(:address, :zipcode, :city, :price,
+          :size, :num_bedrooms, :num_bathrooms, :property_type, :lat, :lon,
+          :image1, :image2, :image3, :image4)
     end
 end
