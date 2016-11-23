@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'properties/edit'
 
+  get 'profile/:id/edit_profile', to: 'profile#edit_profile'
+
   resources :properties
 
   get '/auth/:provider/callback', to: 'sessions#create'

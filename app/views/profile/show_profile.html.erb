@@ -1,27 +1,20 @@
 <div class="container">
   <div class="infoContainer container">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <div class="info">
-      <div class="userImg">
-        <%= image_tag @user.image_url %>
-      </div>
-      <div class="userInfo">
-        <p> <%= @user.age_range %></p>
-        <p> <%= @user.gender %></p>
-        <p id="phoneNumber"><%= @user.phone_number %></p>
-        <p id="email">jkl@ji.si</p>
-      </div>
+    <div class="header">
+      <h1> <%= image_tag @user.image_url %> <%= @user.first_name%> <%= @user.last_name %></h1>
     </div>
-    <p id="about"> This method may cause performance issues, especially when
-      used on many elements. If you're encountering such issues, use performance
-      testing tools to determine whether this method is causing them. Moreover,
-      this method can cause problems with responsive layouts if the display
-      value differs at different viewport sizes. </p>
+    <div class="info">
+        <h3>Upplýsingar:<h3>
+        <p>Aldur:  <%= @user.age_range %></p>
+        <p>Kyn: <%= @user.gender %></p>
+        <p>Símanúmer: <%= @user.phone_number %></p>
+        <p>Tölvupóstfang:  <%= @user.email %></p>
+    </div>
+    <p id="about"> <%= @user.personal_info %></p>
   </div>
   <div class="addInfo">
     <% if current_user == @user %>
-      <button type="button" id="changeInfo" onclick="changeInfo()">Breyta upplýsingum</button>
-      <button type="button" id="saveChanges" onclick="saveChanges()">Vista breytingar</button>
+      <p><%= link_to 'Breyta upplýsingum', '/profile/'+@user.id.to_s+'/edit_profile'%></p>
     <% else %>
       <p><%= link_to 'Hafa samband', @user.url %> við <%= @user.first_name %></p>
       <% end %>
@@ -36,12 +29,12 @@
         <th>Póstnúmer</th>
         <th>Staðsetning</th>
         <th>Stærð</th>
-        <th>Verð</th>
+        <th>Leiguverð á mán</th>
         <th>Skoða</th>
       </tr>
       <% @properties.each do |property| %>
       <tr>
-        <td><<%= property.image1 %></td>
+        <td><%= image_tag property.image1.url  %></td>
         <td><%= property.address %></td>
         <td><%= property.zipcode %></td>
         <td><%= property.city %></td>
