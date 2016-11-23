@@ -1,3 +1,159 @@
 // Place all the styles related to the Profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//===========
+// Variables
+//===========
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+$openSans: Open Sans, sans-serif;
+$raleway: Raleway, sans-serif;
+$oswald: Oswald, sans-serif;
+
+// Colors
+
+$blue: #062F4F;
+$orange: #ee7600;
+$embers: #882601;
+
+// Containers
+
+$navbarHeight: 10%;
+
+// Media queries
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
+//===============
+// General rules
+//===============
+
+* {
+  font-family: $oswald;
+}
+
+div, p {
+  color: white;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $raleway;
+}
+
+h1 {
+    padding: 5%;
+}
+p {
+
+}
+
+a {
+  color: white;
+}
+
+//============
+// Containers
+//============
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: $blue;
+}
+
+a:hover{
+  color: lightblue;
+}
+
+// Property list container
+.infoContainer {
+  display: flex;
+  flex-direction: block;
+  width: 100%;
+  height: 20%;
+}
+
+.info {
+  display: flex;
+  padding-left: 5%;
+  width: 100%;
+}
+.info img {
+  max-height: 10%;
+}
+.userInfo {
+  padding-left: 50%;
+}
+
+.propertyContainer {
+  display: flex;
+  height: 70%;
+  width: 100%;
+  padding-left: 5%;
+  padding-bottom: 5%;
+}
+
+.addInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  width: 60%;
+}
+.addInfo button {
+    background-color: #008CBA;
+    color: white;
+    border: 2px solid #008CBA;
+    height: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.addInfo button:hover {
+    background-color: white;
+    color: #008CBA;
+    cursor: pointer;
+  }
+
+#about {
+    height: 10%;
+    width: 60%;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+  }
+
+th {
+  width: 8%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-align: left;
+}
+
+td {
+  width: 8%;
+  margin-top: 3%;
+  height: 5rem;
+}
+
+td img {
+  max-width: 90%;
+  max-height: 70%;
+}

@@ -1,16 +1,56 @@
-<h1>This is the profile for <%= @user.first_name %></h1>
+<div class="container">
+  <div class="infoContainer container">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="info">
+      <div class="userImg">
+        <%= image_tag @user.image_url %>
+      </div>
+      <div class="userInfo">
+        <p> <%= @user.age_range %></p>
+        <p> <%= @user.gender %></p>
+        <p id="phoneNumber"><%= @user.phone_number %></p>
+        <p id="email">jkl@ji.si</p>
+      </div>
+    </div>
+    <p id="about"> This method may cause performance issues, especially when
+      used on many elements. If you're encountering such issues, use performance
+      testing tools to determine whether this method is causing them. Moreover,
+      this method can cause problems with responsive layouts if the display
+      value differs at different viewport sizes. </p>
+  </div>
+  <div class="addInfo">
+    <% if current_user == @user %>
+      <button type="button" id="changeInfo" onclick="changeInfo()">Breyta upplýsingum</button>
+      <button type="button" id="saveChanges" onclick="saveChanges()">Vista breytingar</button>
+    <% else %>
+      <p><%= link_to 'Hafa samband', @user.url %> við <%= @user.first_name %></p>
+      <% end %>
+  </div>
 
-<% if current_user == @user %>
-<h1>Your listings</h1>
-<% else %>
-  <p><%= link_to 'Contact', @user.url %> on Facebook</p>
-  <% if !(@user.phone_number.nil?) %>
-    <p>Phone number: <%=  @user.phone_number %></p>
-  <% end %>
-  <h1> Listings for <%= @user.first_name %></h1>
-<% end %>
-
-<% @properties.each do |property| %>
-  <h2><%= property.address %></h2>
-  <h2><%= link_to 'Listing', property_path(property)%></h2>
-<% end %>
+  <div class="propertyContainer container">
+    <h2>Leigueignir:</h2>
+    <table class="properties">
+      <tr>
+        <th>Mynd</th>
+        <th>Heimilisfang</th>
+        <th>Póstnúmer</th>
+        <th>Staðsetning</th>
+        <th>Stærð</th>
+        <th>Verð</th>
+        <th>Skoða</th>
+      </tr>
+      <% @properties.each do |property| %>
+      <tr>
+        <td><<%= property.image1 %></td>
+        <td><%= property.address %></td>
+        <td><%= property.zipcode %></td>
+        <td><%= property.city %></td>
+        <td><%= property.size %></td>
+        <td><%= property.price %></td>
+        <td><%= link_to 'Skoða eign', property_path(property) %></td>
+      </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
+</div>

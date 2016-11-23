@@ -1,11 +1,18 @@
 <div class="leftContainer container">
-<% if @property.image1? %>
- <img src="<%= @property.image1.url %>"/>
-<% end %>
-<h1><%= @property.address %></h1>
+
+<div class="flexContainerTitle">
+  <% if @property.image1? %>
+   <img src="<%= @property.image1.url %>" class="mainImageShow"/>
+  <% end %>
+  <div id="propertyTitle">
+    <h1 class="addressTitle"><%= @property.address %></h1>
+    <h3>Verð</h3>
+    <p><%= @property.price %></p>
+  </div>
+
+</div>
 
 <div class="flexContainer">
-
   <div class="flexChild">
     <div>
         <h3>Póstnúmer</h3>
@@ -15,11 +22,6 @@
     <div>
         <h3>Borg/Bær</h3>
         <p><%= @property.city %></p>
-    </div>
-
-    <div>
-        <h3>Verð</h3>
-        <p><%= @property.price %></p>
     </div>
 
     <div>
@@ -52,28 +54,48 @@
 
 </div>
 
+<div class="flexContainerTitle">
 <% if current_user.id == @property.landlord.id %>
-  <h2>Þetta er þitt eigið húsnæði</h2>
+  <h3>Þetta er þitt eigið húsnæði</h3>
   <%= link_to "Breyta/Eyða", edit_property_path(@property)%>
 <% end %>
+</div>
 </div>
 
 <div class="rightContainer container smallMapContainer">
 
     <div class="imageContainer">
-      <% if @property.image2? %>
-        <img src="<%= @property.image2.url %>"/>
-      <% end %>
+      <div class="imageDisplay">
+        <% if @property.image2? %>
+          <img src="<%= @property.image2.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
 
-      <% if @property.image3? %>
-        <img src="<%= @property.image3.url %>"/>
-      <% end %>
+      <div class="imageDisplay">
+        <% if @property.image3? %>
+          <img src="<%= @property.image3.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
 
-      <% if @property.image4? %>
-        <img src="<%= @property.image4.url %>"/>
-      <% end %>
+      <div class="imageDisplay">
+        <% if @property.image4? %>
+          <img src="<%= @property.image4.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
     </div>
 
     <div id="map" class="smallMap"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
+</div>
+
+<div class="imageShowcase">
 </div>
