@@ -46,7 +46,7 @@
         <td><%= property.zipcode %></td>
         <td><%= property.city %></td>
         <td><%= property.size %></td>
-        <td><%= property.price %></td>
+        <td><%= number_with_delimiter(property.price, delimiter: ".") %></td>
         <td><%= link_to 'Skoða eign', property_path(property) %></td>
       </tr>
       <% end %>
