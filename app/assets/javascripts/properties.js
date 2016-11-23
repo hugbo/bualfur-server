@@ -81,6 +81,12 @@ function getGeoLocation(searchQuery) {
     });
 }
 
+
+
+function initShowPropertiesMap(){
+  //tmp
+}
+
 // Photo gallery logic
 
 $(document).ready(function() {
