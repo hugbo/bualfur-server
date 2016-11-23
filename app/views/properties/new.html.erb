@@ -1,59 +1,59 @@
 <div class="leftContainer container">
   <div id="porpertyListingTitle">
-    <h1>Please fill out the form</h1>
+    <h1>Vinsamlegast fyllið út eftirfarandi form</h1>
   </div>
 
   <%= form_for :property, url: properties_path do |f| %>
 <div class="flexContainer">
-  <div id="propertyListingLeft">
+  <div class="flexChild">
 
     <p>
-        <%= f.label :address %>
+        <%= f.label :address, "Heimilisfang" %>
         <br>
         <%= f.text_field :address %>
     </p>
 
     <p>
-        <%= f.label :zipcode %>
+        <%= f.label :zipcode, "Póstnúmer" %>
         <br>
         <%= f.text_field :zipcode %>
     </p>
 
     <p>
-        <%= f.label :city %>
+        <%= f.label :city, "Borg/Bær" %>
         <br>
         <%= f.text_field :city %>
     </p>
 
     <p>
-        <%= f.label :price %>
+        <%= f.label :price, "Verð" %>
         <br>
         <%= f.text_field :price %>
     </p>
 
     <p>
-        <%= f.label :size %>
+        <%= f.label :size, "Fermetrar" %>
         <br>
         <%= f.text_field :size %>
     </p>
 
     <p>
-        <%= f.label :num_bedrooms, "Number of Bedrooms" %>
+        <%= f.label :num_bedrooms, "Fjöldi svefnherbergja" %>
         <br>
         <%= f.text_field :num_bedrooms %>
     </p>
 
     <p>
-        <%= f.label :num_bathrooms, "Number of Bathrooms" %>
+        <%= f.label :num_bathrooms, "Fjöldi baðherbergja" %>
         <br>
         <%= f.text_field :num_bathrooms %>
     </p>
 
   </div>
-  <div id="propertyListingRight">
+  <div class="flexChild">
 
     <p>
-        <%= f.label :property_type, "Property Type" %>
+        <%= f.label :property_type, "Tegund húsnæðis" %>
         <br>
         <%= f.text_field :property_type %>
     </p>
@@ -71,25 +71,25 @@
     </p>
 
     <p>
-      <%= f.label :image1, "Main image" %>
+      <%= f.label :image1, "Forsíðumynd" %>
         <br>
         <%= f.file_field :image1 %>
     </p>
 
     <p>
-      <%= f.label :image2, "Image 2" %>
+      <%= f.label :image2, "Mynd 2" %>
         <br>
         <%= f.file_field :image2 %>
     </p>
 
     <p>
-      <%= f.label :image3, "Image 3" %>
+      <%= f.label :image3, "Mynd 3" %>
         <br>
         <%= f.file_field :image3 %>
     </p>
 
     <p>
-      <%= f.label :image4, "Image 4" %>
+      <%= f.label :image4, "Mynd 4" %>
         <br>
         <%= f.file_field :image4 %>
     </p>
@@ -97,6 +97,13 @@
   </div>
 
 </div>
+
+  <p id="newDescription">
+      <%= f.label :description, "Lýsing" %>
+      <br>
+      <%= f.text_area :description, rows: "15" %>
+  </p>
+
   <p>
       <%= f.submit  %>
   </p>
