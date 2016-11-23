@@ -3,3 +3,7 @@ tmp/
 
 # Ignore application configuration
 /config/application.yml
+
+# Uploaded photos of properties from development
+/public/photos
+/public/system
