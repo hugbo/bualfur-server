@@ -48,7 +48,7 @@ class PropertiesController < ApplicationController
 
     def show
       if !(current_user.present?)
-        redirect_to root_path, flash: {error: "You need to be logged in to create listings"}
+        redirect_to root_path, flash: {error: "Þú þarft að vera skráð(ur) inn!"}
       end
 
       begin
