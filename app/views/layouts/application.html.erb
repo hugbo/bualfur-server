@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Property Search Engine</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Property Search Engine</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all' %>
+        <%= javascript_include_tag 'application' %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+        <nav class="navbar navbar-inverse">
+                <div id="navbar">
+                    <% if current_user %>
+                    <ul class="nav navbar-nav pull-right">
+                        <li id="avatar"><%= image_tag current_user.image_url, alt: current_user.first_name %></li>
+                        <li><%= link_to 'Útskrá', logout_path, method: :delete %></li>
+                        <% if !current_page?('/') %>
+                        <li><%= link_to 'Heim', root_path %></li>
+                        <% end %>
+                        <li><%= link_to 'Ný íbúð', '/properties/new' %></li>
+                        <li><%= link_to 'Prófíll', controller: "profile", action: "show_profile", id: current_user.id %></li>
+                    </ul>
+                <% else %>
+                    <ul class="nav navbar-nav">
+                        <li><%= link_to 'Skrá inn', '/auth/facebook' %></li>
+                    </ul>
+                    <% end %>
+                </div>
+        </nav>
+
+        <%= yield %>
+    </body>
 </html>

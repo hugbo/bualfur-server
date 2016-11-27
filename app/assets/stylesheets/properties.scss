@@ -1,3 +1,142 @@
 // Place all the styles related to the properties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Variables
+
+$navbarHeight: 5%;
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
+// General rules
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+// Containers
+
+#propertylistingTitle {
+  width: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flexChild {
+  width: 40%;
+}
+
+#newDescription textarea{
+  width: 90%;
+}
+
+.flexContainerTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+img.mainImageShow {
+    display: block;
+    max-width: 25%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+#propertyTitle {
+  width: 50%;
+}
+
+#propertyShowDesc {
+  width: 80%;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .imageDisplay {
+    width: 33%;
+    position: relative;
+    overflow: hidden;
+
+    .imageOverlay {
+      margin: 0;
+      padding: 0;
+      background: lightgrey;
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      transition: 0.3s;
+
+      display: inline-block;
+      text-align: center;
+
+      h2 {
+        padding-top: 50%;
+        color: black;
+      }
+
+    }
+
+    .imageOverlay:hover {
+      opacity: 0.7;
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+    }
+
+  }
+
+}
+
+.smallMapContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+  height: (100% - $navbarHeight);
+}
+
+.smallMap {
+  height: 50%;
+  width: 100%;
+}
+
+.imageShowcase {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 9999;
+}
+
+#submitButton {
+  margin: 0 5% 0 5%;
+}

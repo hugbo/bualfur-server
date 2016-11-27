@@ -2,21 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//===========
 // Variables
+//===========
+
+// Fonts
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 $openSans: Open Sans, sans-serif;
 $raleway: Raleway, sans-serif;
+$oswald: Oswald, sans-serif;
+
+// Colors
 
 $blue: #062F4F;
-$purple: #813772;
-$embers: #882601;
+$orange: #ee7600;
+$purple: lighten($blue, 30%);
+$embers: lighten($blue, 15%);
 
+// Containers
+
+$navbarHeight: 5%;
+
+// Media queries
+
+$breakpointMap: 1100px;
+$breakpointLeftcontainer: 1550px;
+$breakpointSmall: 800px;
+
+//===============
 // General rules
+//===============
 
 * {
-  font-family: $openSans;
+  font-family: $oswald;
 }
 
 div, p {
@@ -29,34 +50,286 @@ body, html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $raleway;
+  font-family: $oswald;
 }
 
 .container {
-  height: 100%;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   display: inline-block;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pseudoLink {
+  cursor: pointer;
+}
+
+//============
+// Containers
+//============
+
+// Navbar
+
+.navbar {
+  height: $navbarHeight;
+  background-color: $purple;
+}
+
+#navbar {
+  width: 100%;
+  height: 100%;
+  display: table;
+
+  ul {
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: table-cell;
+  }
+
+  li {
+    float: left;
+    height: 100%;
+    width: 6em;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  li#avatar {
+    width: auto;
+  }
+
+  a:hover {
+    background-color: lighten($purple, 20%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
+
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  img {
+    height: 100%;
+  }
+}
+
 // Search container
 
+.search {
+  margin: 5% 0 5% 5% !important;
+}
+
+span.hiddenValue {
+  background-color: lighten($blue, 20%);
+  padding: 0 2% 0 2%;
+}
+
 .leftContainer {
+  width: 50%;
+  height: (100% - $navbarHeight);
   background-color: $blue;
   float: left;
+  overflow-y: auto;
+  font-family: $oswald;
+
   * {
     margin: 5%;
   }
+  span {
+    margin: 0;
+  }
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointMap) {
+    width: 100%;
+    float: none;
+    height: auto;
+
+    * {
+      margin: 2.5%;
+    }
+
+  }
+}
+
+.input-group {
+  min-height: 30em;
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    min-height: 0;
+  }
+
+  @media screen and (max-width: $breakpointMap) {
+    min-height: 30em;
+  }
+
+  @media screen and (max-width: $breakpointSmall) {
+    min-height: 0;
+  }
+}
+
+.postnumer {
+  width: 50%;
+  float: left;
+  margin-top: -2.5%;
+
+  input.hasValue {
+    margin: 2.5%;
+  }
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    float: none;
+
+    input {
+      margin: 2.5%;
+    }
+
+    input.hasValue {
+      margin: 1.25%;
+    }
+
+  }
+
+  @media screen and (max-width: $breakpointMap) {
+    float: left;
+
+    input {
+      margin: 5%;
+    }
+
+    input.hasValue {
+      margin: 2.5%;
+    }
+  }
+
+  @media screen and (max-width: $breakpointSmall) {
+    float: none;
+    clear: right;
+
+    input {
+      margin: 2.5%;
+    }
+
+    input.hasValue {
+      margin: 1.25%;
+    }
+  }
+
+}
+
+#postnumerCollapse {
+  overflow-y: auto;
+    max-height: 23em;
+    margin-bottom: 0;
+    background-color: $embers;
+
+    // Media queries
+
+    @media screen and (max-width: $breakpointMap) {
+      max-height: 28em;
+    }
+
+}
+
+.otherInputs {
+  min-height: 26em;
+  margin-left: 55%;
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointLeftcontainer) {
+    margin-left: inherit;
+    min-height: 0;
+  }
+}
+
+#search-button {
+  margin: 0;
+}
+
+// Property list container
+
+.propertylist {
+  margin: 5% 0 5% 0;
+  display: flex;
+  overflow-y: scroll;
+}
+
+.propertyList {
+  width: 100%;
+  margin: 5% 0 5% 0;
+  border: collapse;
+
+  th {
+    text-align: left;
+  }
+
+  th:first-child {
+    padding-left: 2.5%;
+  }
+
+  td {
+    height: 5em;
+  }
+
+  td:first-child {
+    padding-left: 2.5%;
+  }
+
+  tbody, thead {
+    margin: 5%;
+  }
+
+  tbody > tr:hover {
+    background: linear-gradient(to bottom, lighten($blue, 5%),
+    lighten($blue, 15%), lighten($blue, 5%));
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
 }
 
 // Map container
 
 .rightContainer {
+  width: 50%;
+  height: (100% - $navbarHeight);
   background-color: $embers;
   float: right;
+
+  // Media queries
+
+  @media screen and (max-width: $breakpointMap) {
+    width: 100%;
+    float: none;
+  }
 }
 
 #map {
   width: 100%;
   height: 100%;
+}
+
+.markerContent > p {
+  color: #000000;
 }

@@ -4,7 +4,18 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get 'profile/:id', to: 'profile#show_profile'
+
+  post 'properties/search'
+
+  post 'properties/edit'
+
+  get 'profile/:id/edit_profile', to: 'profile#edit_profile'
+
   resources :properties
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#destroy'
 
 end

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="infoContainer container">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="info">
+      <div class="userImg">
+        <%= image_tag @user.image_url %>
+      </div>
+      <div class="userInfo">
+        <h3>Upplýsingar:</h3>
+        <p>Aldur:  <%= @user.age_range %></p>
+        <p>Kyn: <%= @user.gender %></p>
+        <form>
+          <p>Símanúmer:<input type="tel" name="tel" value=<%= @user.phone_number %>></p>
+          <p> Núverandi tölvupóstfang:  <%= @user.email %></p>
+            Nýtt tölvupóstfang:
+            <input type="email" name="email">
+          </form>
+      </div>
+    </div>
+    <textarea rows="6" cols="100" name="comment" form="usrform">
+      <%= @user.personal_info %> </textarea>
+  </div>
+  <div class="addInfo">
+    <% if current_user == @user %>
+      <button type="button">Vista breytingar</button>
+    <% else %>
+      <p><%= link_to 'Hafa samband', @user.url %> við <%= @user.first_name %></p>
+      <% end %>
+  </div>
+</div>

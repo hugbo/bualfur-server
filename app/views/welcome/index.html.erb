@@ -1,15 +1,243 @@
 <div class="leftContainer container">
-  <h2>Here is the list!</h2>
-  <div class="search">
-    <p>The Search bar will be here</p>
-  </div>
-  <div class="propertylist">
-    <p>And the property list here</p>
-  </div>
+
+  <% if flash[:error] %>
+    <h1><%= flash[:error] %></h1>
+  <% end %>
+
+    <div class="search">
+        <label for="search" class="search"><span class="pseudoLink" id="searchToggle">LEIT</span>
+        <span id="searchValue" class="hiddenValue" style="display: none">Placeholder</span>
+        </label>
+        <div class="input-group">
+
+
+          <div id="postnumer" class="postnumer">
+            <p class="pseudoLink" id="postnumerToggle">Póstnúmer:
+            <span id="postnumerValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="postnumerCollapse">
+              <form>
+                  <input type="checkbox" name="zipALL" id="zipALL" class="pseudoLink"
+                  onchange="handleChange(this)">
+                  <span>Öll póstnúmer</span></input><br>
+
+                  <input type="checkbox" name="REY" class="zipMANY"
+                    onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleREY">Reykjavík</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseREY" style="display: none">
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="101">101 - Miðbær/Vesturbær</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="103">103 - Kringlan/Hvassaleiti</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="104">104 - Vogar</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="105">105 - Austurbær</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="107">107 - Vesturbær</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="108">108 - Austurbær</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="109">109 - Bakkar/Seljahverfi</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="110">110 - Árbær/Selás</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="111">111 - Berg/Hólar/Fell</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="112">112 - Grafarvogur</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="113">113 - Grafarholt</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="114">114 - Reykjavík</input><br>
+                    <input type="checkbox" class="hasValue zipREY"
+                      name="zipREY" value="116">116 - Kjalarnes</input><br>
+                  </div>
+
+                  <input type="checkbox" name="SEL" class="zipMANY"
+                  onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleSEL">Seltjarnarnes</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseSEL" style="display: none">
+                    <input type="checkbox" class="hasValue zipSEL"
+                      name="zipSEL" value="170">170 - Seltjarnarnes</input>
+                  </div>
+
+                  <input type="checkbox" name="KOP" class="zipMANY"
+                  onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleKOP">Kópavogur</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseKOP" style="display: none">
+                    <input type="checkbox" class="hasValue zipKOP"
+                      name="zipKOP" value="200">200 - Kópavogur</input><br>
+                    <input type="checkbox" class="hasValue zipKOP"
+                      name="zipKOP" value="201">201 - Kópavogur</input><br>
+                    <input type="checkbox" class="hasValue zipKOP"
+                      name="zipKOP" value="203">203 - Kópavogur</input><br>
+                  </div>
+
+                  <input type="checkbox" name="GAR" class="zipMANY"
+                  onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleGAR">Garðabær</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseGAR" style="display: none">
+                    <input type="checkbox" class="hasValue zipGAR"
+                      name="zipGAR" value="210">210 - Garðabær</input><br>
+                    <input type="checkbox" class="hasValue zipGAR"
+                      name="zipGAR" value="225">225 - Álftanes</input><br>
+                  </div>
+
+                  <input type="checkbox" name="HAF" class="zipMANY"
+                  onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleHAF">Hafnarfjörður</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseHAF" style="display: none">
+                    <input type="checkbox" class="hasValue zipHAF"
+                      name="zipHAF" value="220">220 - Hafnarfjörður</input><br>
+                    <input type="checkbox" class="hasValue zipHAF"
+                      name="zipHAF" value="221">221 - Hafnarfjörður</input><br>
+                  </div>
+
+                  <input type="checkbox" name="MOS" class="zipMANY"
+                  onchange="handleChange(this)">
+                  <span class="pseudoLink" id="toggleMOS">Mosfellsbær</span>
+                  </input><br>
+                  <div class="zipCollapse" id="collapseMOS" style="display: none">
+                    <input type="checkbox" class="hasValue zipMOS"
+                      name="zipMOS" value="270">270 - Hafnarfjörður</input><br>
+                    <input type="checkbox" class="hasValue zipMOS"
+                      name="zipMOS" value="271">271 - Hafnarfjörður</input><br>
+                    <input type="checkbox" class="hasValue zipMOS"
+                      name="zipMOS" value="276">276 - Hafnarfjörður</input><br>
+                  </div>
+
+              </form><br>
+            </div>
+          </div>
+
+          <div id="otherInputs" class="otherInputs">
+            <p class="pseudoLink" id="verdToggle">Leiguverð:
+            <span id="verdValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="verdCollapse">
+              <input type="text" placeholder="Min" id="priceMin">
+              <input type="text" placeholder="Max" id="priceMax"><br>
+            </div>
+
+            <p class="pseudoLink" id="numRoomsToggle">Fjöldi herbergja:
+            <span id="numRoomsValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="numRoomsCollapse">
+              <select id="min-rooms">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+              </select>
+              <span>til</span>
+              <select id="max-rooms">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7" selected="selected">7+</option>
+              </select>
+            </div>
+
+
+            <p class="pseudoLink" id="houseTypeToggle"> Tegund húsnæðis:
+            <span id="houseTypeValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="houseTypeCollapse">
+              <form>
+                <input class="houseTypeInput" type="checkbox" value="Einbýlishús">Einbýli
+                <input class="houseTypeInput" type="checkbox" value="Fjölbýlishús">Fjölbýli
+                <input class="houseTypeInput" type="checkbox" value="Parhús">Parhús
+              </form>
+            </div>
+
+            <p class="pseudoLink" id="squareMeterToggle">Fermetrar:
+            <span id="squareMeterValue" class="hiddenValue" style="display: none">Placeholder</span>
+            </p>
+            <div id="squareMeterCollapse">
+              <select id="min-size">
+                  <option value="0">0</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                  <option value="125">125</option>
+                  <option value="150">150</option>
+                  <option value="175">175</option>
+                  <option value="200">200</option>
+                  <option value="225">225</option>
+                  <option value="250">250</option>
+                  <option value="275">275</option>
+                  <option value="300">300</option>
+                  <option value="350">350</option>
+                  <option value="400">400</option>
+              </select>
+              <span>til</span>
+              <select id="max-size">
+                  <option value="0">0</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                  <option value="125">125</option>
+                  <option value="150">150</option>
+                  <option value="175">175</option>
+                  <option value="200">200</option>
+                  <option value="225">225</option>
+                  <option value="250">250</option>
+                  <option value="275">275</option>
+                  <option value="300">300</option>
+                  <option value="350">350</option>
+                  <option value="400">400</option>
+                  <option value="450" selected="selected">450</option>
+              </select>
+            </div>
+
+          </div>
+
+            <input type="button" id="search-button" value="Leita">
+        </div>
+
+    </div>
+    <div class="propertylist">
+        <table id="propertylist" class='propertyList' cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+                <th>Heimilisfang</th>
+                <th>Póstnúmer</th>
+                <th>Stærð</th>
+                <th>Svefnherbergi</th>
+                <th>Leiguverð á mánuði</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="rightContainer container">
-  <div id="map"></div>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
+    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initMap"></script>
 </div>

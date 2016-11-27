@@ -1,0 +1,51 @@
+<div class="leftContainer container">
+  <div class="infoContainer">
+    <div class="header">
+      <h1> <%= image_tag @user.image_url %> <%= @user.first_name%> <%= @user.last_name %></h1>
+    </div>
+    <div class="info">
+        <h3>Upplýsingar:<h3>
+        <p>Aldur:  <%= @user.age_range %></p>
+        <p>Kyn: <%= @user.gender %></p>
+        <p>Símanúmer: <%= @user.phone_number %></p>
+        <p>Tölvupóstfang:  <%= @user.email %></p>
+    </div>
+    <p id="about"> <%= @user.personal_info %></p>
+  </div>
+  <div class="addInfo">
+    <% if current_user == @user %>
+    <% else %>
+      <p><%= link_to 'Hafa samband', @user.url %> við <%= @user.first_name %></p>
+      <% end %>
+  </div>
+</div>
+
+<div class="propertyContainer rightContainer container">
+    <h2>Leigueignir:</h2>
+    <table class="propertyList" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th>Mynd</th>
+          <th>Heimilisfang</th>
+          <th>Póstnúmer</th>
+          <th>Staðsetning</th>
+          <th>Stærð</th>
+          <th>Leiguverð á mán</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @properties.each do |property| %>
+        <tr class="propertyRow" data-url="/properties/<%= property.id %>" >
+          <td><%= image_tag property.image1.url  %></td>
+          <td><%= property.address %></td>
+          <td><%= property.zipcode %></td>
+          <td><%= property.city %></td>
+          <td><%= property.size %></td>
+          <td><%= number_with_delimiter(property.price, delimiter: ".") %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <br>
+  </div>
+</div>

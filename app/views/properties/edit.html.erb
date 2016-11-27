@@ -1,0 +1,90 @@
+<div class="leftContainer container">
+<h2>Breyttu upplýsingum</h2>
+
+<%= form_for @property_to_edit do |f| %>
+
+<div class="flexContainer">
+
+  <div class="flexChild">
+<p>
+    <%= f.label :address, "Heimilisfang" %>
+    <br>
+    <%= f.text_field :address %>
+</p>
+
+<p>
+    <%= f.label :zipcode, "Póstnúmer" %>
+    <br>
+    <%= f.text_field :zipcode %>
+</p>
+
+<p>
+    <%= f.label :city, "Borg/bær" %>
+    <br>
+    <%= f.text_field :city %>
+</p>
+
+<p>
+    <%= f.label :price, "Leigurverð" %>
+    <br>
+    <%= f.text_field :price %>
+</p>
+
+<p>
+    <%= f.label :size, "Fermetrar" %>
+    <br>
+    <%= f.text_field :size %>
+</p>
+
+</div>
+<div class="flexChild">
+
+<p>
+    <%= f.label :num_bedrooms, "Fjöldi svefnherbergja" %>
+    <br>
+    <%= f.text_field :num_bedrooms %>
+</p>
+
+<p>
+    <%= f.label :num_bathrooms, "Fjöldi baðherbergja" %>
+    <br>
+    <%= f.text_field :num_bathrooms %>
+</p>
+
+<p>
+    <%= f.label :property_type, "Tegund húsnæðis" %>
+    <br>
+    <%= f.select(:property_type,
+    options_for_select([['Einbýlishús', 'Einbýlishús'],
+    ['Fjölbýlishús', 'Fjölbýlishús'],
+    ['Parhús', 'Fjölbýlishús']])) %>
+</p>
+
+<p>
+  <%= f.label :lat, "Latitude" %>
+    <br>
+    <%= f.text_field :lat %>
+</p>
+
+<p>
+  <%= f.label :lon, "Longitude" %>
+    <br>
+    <%= f.text_field :lon %>
+</p>
+</div>
+
+</div>
+
+<p id="submitButton">
+    <%= f.submit  "Uppfæra"%>
+</p>
+
+<%= link_to 'Eyða', @property_to_edit, method: :delete, confirm: "This cannot be undone" %>
+
+<% end %>
+</div>
+
+<div class="rightContainer container">
+    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initNewPropertyMap"></script>
+</div>

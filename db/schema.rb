@@ -10,22 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102215945) do
+ActiveRecord::Schema.define(version: 20161123021418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "properties", force: :cascade do |t|
+  create_table "properties", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "address"
     t.string   "zipcode"
     t.string   "city"
-    t.string   "price"
-    t.string   "size"
-    t.string   "numBedrooms"
-    t.string   "numBathrooms"
-    t.string   "propertyType"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "price"
+    t.integer  "size"
+    t.integer  "num_bedrooms"
+    t.integer  "num_bathrooms"
+    t.string   "property_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "uid"
+    t.string   "description"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "image3_file_name"
+    t.string   "image3_content_type"
+    t.integer  "image3_file_size"
+    t.datetime "image3_updated_at"
+    t.string   "image4_file_name"
+    t.string   "image4_content_type"
+    t.integer  "image4_file_size"
+    t.datetime "image4_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",                      null: false
+    t.string   "uid",                           null: false
+    t.string   "first_name"
+    t.string   "image_url"
+    t.string   "url"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "age_range"
+    t.boolean  "is_landlord",   default: false
+    t.boolean  "is_renter",     default: false
+    t.string   "phone_number"
+    t.string   "personal_info", default: ""
+    t.string   "email"
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
+    t.index ["provider"], name: "index_users_on_provider", using: :btree
+    t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
 end

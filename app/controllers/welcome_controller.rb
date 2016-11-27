@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-
-  def dank
-    @meme = "memes"
-  end
+    def index
+    end
 end

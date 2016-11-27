@@ -1,12 +1,104 @@
-<h1>Dank Memes for <em>show</em></h1>
-<h2>For your digestive system</h2>
+<div class="leftContainer container">
 
-<p>
-  <strong>Address</strong>
-  <%= @property.address %>
-</p>
+<div class="flexContainerTitle">
+  <% if @property.image1? %>
+   <img src="<%= @property.image1.url %>" class="mainImageShow imageClick"/>
+  <% end %>
+  <div id="propertyTitle">
+    <h1 class="addressTitle"><%= @property.address %></h1>
+    <h3>Leiguverð</h3>
+    <p><%= number_with_delimiter(@property.price, delimiter: ".") %></p>
+  </div>
 
-<p>
-  <strong>Price</strong>
-  <%= @property.price  %>
-</p>
+</div>
+
+<div class="flexContainer">
+  <div class="flexChild">
+    <div>
+        <h3>Póstnúmer</h3>
+        <p><%= @property.zipcode  %></p>
+    </div>
+
+    <div>
+        <h3>Borg/Bær</h3>
+        <p><%= @property.city %></p>
+    </div>
+
+    <div>
+        <h3>Fermetrar</h3>
+        <p><%= @property.size %></p>
+    </div>
+  </div>
+
+  <div class="flexChild">
+    <div>
+        <h3>Fjöldi svefnherbergja</h3>
+        <p><%= @property.num_bedrooms %></p>
+    </div>
+
+    <div>
+        <h3>Fjöldi barherbergja</h3>
+        <p><%= @property.num_bathrooms %></p>
+    </div>
+
+    <div>
+        <h3>Tegund húsnæðis</h3>
+        <p><%= @property.property_type %></p>
+    </div>
+  </div>
+
+  <div id="propertyShowDesc" lat= <%= @property.lat %> lng= <%= @property.lon %>>
+      <h3>Lýsing</h3>
+      <p><%= @property.description %></p>
+  </div>
+
+</div>
+
+<div class="flexContainerTitle">
+<% if current_user.id == @property.landlord.id %>
+  <h3>Þetta er þitt eigið húsnæði</h3>
+  <%= link_to "Breyta/Eyða", edit_property_path(@property)%>
+<% end %>
+</div>
+</div>
+
+<div class="rightContainer container smallMapContainer">
+
+    <div class="imageContainer">
+      <div class="imageDisplay imageClick">
+        <% if @property.image2? %>
+          <img src="<%= @property.image2.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
+
+      <div class="imageDisplay imageClick">
+        <% if @property.image3? %>
+          <img src="<%= @property.image3.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
+
+      <div class="imageDisplay imageClick">
+        <% if @property.image4? %>
+          <img src="<%= @property.image4.url %>" class="sideImageShow"/>
+          <span class="imageOverlay"><h2>STÆKKA</h2></span>
+        <% else %>
+          <h3>Engin mynd<h3>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="smallMap">
+      <div id="map"></div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qF171O_qBdXdwSLnH07kFDtbCk5M1CY&callback=initShowPropertiesMap"></script>
+</div>
+
+<div class="imageShowcase">
+  <img class="showcasedImage"/>
+</div>

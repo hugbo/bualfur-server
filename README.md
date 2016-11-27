@@ -1,68 +1,52 @@
-# ruby-getting-started
+# Hugbúnaðarverkefni 1 - Property Search Engine
 
-A barebones Rails app, which can easily be deployed to Heroku.
+## Project members
 
-This application support the [Getting Started with Ruby on Heroku](https://devcenter.heroku.com/articles/getting-started-with-ruby) article - check it out.
+* [Egill Ian Guðmundsson](https://github.com/egillian1)
+* [Hildur Sigurjónsdóttir](https://github.com/hildurs)
+* [Oddgeir Páll Georgsson](https://github.com/oddgeirpall)
+* [Stefán Carl Peiser](https://github.com/stefancarlpeiser)
 
-## Running Locally
 
-Make sure you have Ruby installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+## Installation
 
-```sh
-$ git clone git@github.com:heroku/ruby-getting-started.git
-$ cd ruby-getting-started
-$ bundle install
-$ bundle exec rake db:create db:migrate
-$ heroku local
-```
+### Prerequisites
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+You need to have the following installed before continuing:
 
-## Deploying to Heroku
+* Ruby
+* Rails
+* PostgreSQL
 
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku run rake db:migrate
-$ heroku open
-```
+### Set up
 
-or
+Download the project and install all the necessary packages with the
+`bundle install` command.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Once done create the necessary database with `rake db:create`
 
-## Docker
+Now you need to add the "uuid-ossp" extension to the newly created database,
+this is done by executing the following commands after logging in as the appropriate
+user:
 
-The app can be run and tested using the [Heroku Docker CLI plugin](https://devcenter.heroku.com/articles/introduction-local-development-with-docker).
+    $ psql
+    user=# \connect hugbo_leiga_development
+    user=# CREATE EXTENSION "uuid-ossp";
 
-Make sure the plugin is installed:
+You can also do this through the pgAdmin GUI.
 
-    heroku plugins:install heroku-docker
+Once you have created the extension go back to the project folder and make the necessary migrations to the db and import the seed
 
-Configure Docker and Docker Compose:
+    rake db:migrate db:seed
 
-    heroku docker:init
+Next create the environment file by executing `bundle exec figaro install`
 
-And run the app locally:
+Now you need to insert the proper info to your `applications.yml` file, with values you get from Facebook, the file should look like
 
-    docker-compose up web
+    FACEBOOK_KEY: "Your facebook app id goes here"
+    FACEBOOK_SECRET: "Your facebook app secret goes here"
+    HASH_SEED: "Your seed goes here"
 
-The app will now be available on the Docker daemon IP on port 8080.
+You can generate a seed which you can use with HASH_SEED by executing `rake secret`, though it can be something else entirely
 
-To work with the local database and do migrations, you can open a shell:
-
-    docker-compose run shell
-    bundle exec rake db:migrate
-
-You can also use Docker to release to Heroku:
-
-    heroku create
-    heroku docker:release
-    heroku open
-
-## Documentation
-
-For more information about using Ruby on Heroku, see these Dev Center articles:
-
-- [Ruby on Heroku](https://devcenter.heroku.com/categories/ruby)
-
+Everything should be ready now, to run the server simply execute the command `rails s`
