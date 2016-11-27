@@ -12,7 +12,7 @@ class PropertiesController < ApplicationController
     def destroy
       @property = Property.find(params[:id])
       @property.destroy
-      redirect_to properties_my_properties_path
+      redirect_to action: "show_profile", controller: "profile", id: current_user.id
     end
 
     # Handler for dealing with request to edit property
