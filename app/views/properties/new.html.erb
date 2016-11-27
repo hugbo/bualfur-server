@@ -61,13 +61,13 @@
         ['Parhús', 'Fjölbýlishús']])) %>
     </p>
 
-    <p>
+    <p class="hiddenInput">
       <%= f.label :lat, "Latitude" %>
         <br>
         <%= f.text_field :lat %>
     </p>
 
-    <p>
+    <p class="hiddenInput">
       <%= f.label :lon, "Longitude" %>
         <br>
         <%= f.text_field :lon %>
@@ -96,6 +96,9 @@
         <br>
         <%= f.file_field :image4 %>
     </p>
+
+    <h2>Vinsamlegast smellið á kortið til hægri til að
+    sýna staðsetningu á eigninni</h2>
 
   </div>
 

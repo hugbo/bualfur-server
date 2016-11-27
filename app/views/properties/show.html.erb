@@ -6,8 +6,10 @@
   <% end %>
   <div id="propertyTitle">
     <h1 class="addressTitle"><%= @property.address %></h1>
-    <h3>Leiguverð</h3>
+    <h2>Leiguverð</h2>
     <p><%= number_with_delimiter(@property.price, delimiter: ".") %></p>
+    <h2>Leigusali</h2>
+    <a href="/profile/<%= @property.landlord.id %>" > <%= @property.landlord.first_name %> <%= @property.landlord.last_name %></a>
   </div>
 
 </div>

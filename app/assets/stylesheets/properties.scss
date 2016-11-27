@@ -45,6 +45,10 @@ a {
   flex-wrap: wrap;
 }
 
+.hiddenInput {
+  display: none;
+}
+
 img.mainImageShow {
     display: block;
     max-width: 25%;
