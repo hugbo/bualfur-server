@@ -14,7 +14,6 @@
   </div>
   <div class="addInfo">
     <% if current_user == @user %>
-      <p><%= link_to 'Breyta upplýsingum', '/profile/'+@user.id.to_s+'/edit_profile'%></p>
     <% else %>
       <p><%= link_to 'Hafa samband', @user.url %> við <%= @user.first_name %></p>
       <% end %>
@@ -36,7 +35,7 @@
       </thead>
       <tbody>
         <% @properties.each do |property| %>
-        <tr class="propertyRow" data-url=/properties/<%= property.id %> >
+        <tr class="propertyRow" data-url="/properties/<%= property.id %>" >
           <td><%= image_tag property.image1.url  %></td>
           <td><%= property.address %></td>
           <td><%= property.zipcode %></td>

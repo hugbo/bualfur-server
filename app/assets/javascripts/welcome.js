@@ -32,31 +32,40 @@ var searchInfo = {
 $(function() {
     console.log("ready!");
 
-    $('#search-button').click(function() {
+    $('#search-button').click(searchButtonListener);
 
-        var valuesToSubmit = {
-            zipcode: searchInfo.postnumer(),
-            price_min: searchInfo.verd().min,
-            price_max: searchInfo.verd().max,
-            rooms_min: searchInfo.numRooms().min,
-            rooms_max: searchInfo.numRooms().max,
-            property_type: searchInfo.houseType(),
-            square_meters_min: searchInfo.squareMeters().min,
-            square_meters_max: searchInfo.squareMeters().max
-        }
+    initAnimations();
+    initSearchField();
 
-        if (valuesToSubmit['zipcode'].length == 0) {
-          valuesToSubmit['zipcode'] = '';
-        }
-
-        if (valuesToSubmit['property_type'].length == 0) {
-          valuesToSubmit['property_type'] = '';
-        }
-
-        performSearch(valuesToSubmit);
-        return false; // prevents normal behaviour
+    $('.propertyRow').click(function() {
+      window.location = $(this).data('url');
     });
+
 });
+
+function searchButtonListener(){
+      var valuesToSubmit = {
+          zipcode: searchInfo.postnumer(),
+          price_min: searchInfo.verd().min,
+          price_max: searchInfo.verd().max,
+          rooms_min: searchInfo.numRooms().min,
+          rooms_max: searchInfo.numRooms().max,
+          property_type: searchInfo.houseType(),
+          square_meters_min: searchInfo.squareMeters().min,
+          square_meters_max: searchInfo.squareMeters().max
+      }
+
+      if (valuesToSubmit['zipcode'].length == 0) {
+        valuesToSubmit['zipcode'] = '';
+      }
+
+      if (valuesToSubmit['property_type'].length == 0) {
+        valuesToSubmit['property_type'] = '';
+      }
+
+      performSearch(valuesToSubmit);
+      return false; // prevents normal behaviour
+}
 
 function initMap() {
     var center = {'lat':64.139583, 'lng':-21.951879}
@@ -142,14 +151,12 @@ function updatePropertyList(data) {
               '<td>' + data.properties[i].price.toLocaleString('de-DE') + '</td>' +
               '</tr>');
       }
-
-
-      $(function() {
-        $('.propertyRow').click(function() {
-          window.location = $(this).data('url');
-        });
-      });
     }
+
+    $('.propertyRow').click(function() {
+      window.location = $(this).data('url');
+    });
+
 
 }
 
@@ -207,9 +214,6 @@ function attachMarkerListeners(i) {
   });
 }
 
-
-
-
 // Checkbox logic
 
 function handleChange(checkbox) {
@@ -238,9 +242,7 @@ function handleChange(checkbox) {
 
 // Search field logic
 
-
-
-$(function() {
+function initSearchField() {
 
   $('#min-size').change(function() {
     var min = $('#min-size').val();
@@ -272,13 +274,11 @@ $(function() {
     if (+min > +max) $('#min-rooms').val(max);
   });
 
-});
+}
 
 // Animations
 
-$(function() {
-
-
+function initAnimations() {
 
   $('#searchToggle').click(function() {
     $('.input-group').toggle(200);
@@ -439,4 +439,4 @@ $(function() {
   });
 
 
-});
+}
