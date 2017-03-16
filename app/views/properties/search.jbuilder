@@ -7,6 +7,7 @@ json.properties @properties do |property|
   json.size property.size
   json.property_type property.property_type
   json.rooms property.num_bedrooms
+  json.bathrooms property.num_bathrooms
   json.gpslocation do
     json.lat property.lat
     json.lng property.lon

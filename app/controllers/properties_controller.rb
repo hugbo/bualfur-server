@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
 
     # Handler for creating property listings and saving to database
     def create

@@ -161,6 +161,7 @@ function updatePropertyList(data) {
 }
 
 function performSearch(query) {
+    console.log(query);
 
     var token = $('meta[name="csrf-token"]').attr('content');
     $.ajaxSetup({
