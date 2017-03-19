@@ -48,6 +48,10 @@ class PropertiesController < ApplicationController
         end
     end
 
+    def show_json
+        @property = Property.find(params[:id])
+    end
+
     def show
       if !(current_user.present?)
         redirect_to root_path, flash: {error: "Þú þarft að vera skráð(ur) inn!"}
