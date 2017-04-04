@@ -20,12 +20,13 @@
                         <% end %>
                         <li><%= link_to 'Ný íbúð', '/properties/new' %></li>
                         <li><%= link_to 'Prófíll', controller: "profile", action: "show_profile", id: current_user.id %></li>
+                        <li><%= link_to 'Skilaboð' %></li>
                     </ul>
-                <% else %>
+                  <% else %>
                     <ul class="nav navbar-nav">
                         <li><%= link_to 'Skrá inn', '/auth/facebook' %></li>
                     </ul>
-                    <% end %>
+                  <% end %>
                 </div>
         </nav>
 

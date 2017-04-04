@@ -33,6 +33,10 @@ gem 'paperclip'
 
 gem 'jquery-ui-rails'
 
+gem 'mailboxer'
+
+gem 'will_paginate'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
