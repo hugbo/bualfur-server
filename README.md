@@ -1,4 +1,4 @@
-# Hugbúnaðarverkefni 1 - Property Search Engine
+# Búálfur Server  - Property Search Engine
 
 ## Project members
 
