@@ -33,6 +33,9 @@ gem 'paperclip'
 
 gem 'jquery-ui-rails'
 
+
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

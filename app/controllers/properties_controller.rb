@@ -73,6 +73,19 @@ class PropertiesController < ApplicationController
       end
     end
 
+
+    def create_android
+      token = params[:access_token]
+      @property = Property.new(property_params)
+      @property.landlord = User.from_android(token)
+
+      @property.save
+
+      @property
+
+      redirect_to(:action => show_json)
+    end
+
     private
     # Private method for database validation
     def property_params

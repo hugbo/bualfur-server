@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  post 'sessions/get_user'
+
   delete '/logout', to: 'sessions#destroy'
 
 end

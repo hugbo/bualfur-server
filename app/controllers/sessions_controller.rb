@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:get_user]
+
   def create
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
@@ -16,5 +18,10 @@ class SessionsController < ApplicationController
       flash[:success] = 'See you!'
     end
     redirect_to root_path
+  end
+
+  def get_user
+    graph_data = params[:graph_data]
+    @user = User.from_android(graph_data)
   end
 end
