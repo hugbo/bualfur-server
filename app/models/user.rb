@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :owned_property, :class_name => 'Property', :foreign_key => "uid"
   has_one :rented_property, :class_name => 'Property', :foreign_key => "uid"
 
+  # Mailboxer keyword for giving user models rights to send messages
+  acts_as_messageable
+
   # Method to create user from OAuth token passed from external social network
   class << self
     def from_omniauth(auth_hash)
@@ -19,6 +22,9 @@ class User < ApplicationRecord
     end
   end
 
+  # No emails available in current system, left empty
+  def mailboxer_email(object)
+  end
 
   def self.from_android(graph_data)
     user = find_or_create_by(uid: graph_data['id'], provider: "facebook")
