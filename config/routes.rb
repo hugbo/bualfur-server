@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   post 'sessions/get_user'
 
+  post 'properties/create_android'
+
   delete '/logout', to: 'sessions#destroy'
 
 end

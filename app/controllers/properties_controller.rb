@@ -75,15 +75,17 @@ class PropertiesController < ApplicationController
 
 
     def create_android
-      token = params[:access_token]
+      userid = params[:id]
       @property = Property.new(property_params)
-      @property.landlord = User.from_android(token)
+      @property.landlord = User.where(:uid => userid)[0]
 
       @property.save
 
       @property
 
-      redirect_to(:action => show_json)
+      puts @property.address
+
+      redirect_to action: "show_json", id: @property.id
     end
 
     private
