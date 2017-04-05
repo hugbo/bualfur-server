@@ -73,6 +73,21 @@ class PropertiesController < ApplicationController
       end
     end
 
+
+    def create_android
+      userid = params[:id]
+      @property = Property.new(property_params)
+      @property.landlord = User.where(:uid => userid)[0]
+
+      @property.save
+
+      @property
+
+      puts @property.address
+
+      redirect_to action: "show_json", id: @property.id
+    end
+
     private
     # Private method for database validation
     def property_params

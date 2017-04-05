@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  post 'sessions/get_user'
+
+  post 'properties/create_android'
+
   delete '/logout', to: 'sessions#destroy'
 
   resources :conversations, only: [:index, :show, :destroy] do
