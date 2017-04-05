@@ -8,7 +8,10 @@
     <%= avatar_for conversation.last_message.sender %>
 
   <p><%= conversation.last_message.body %>
-      <% end %>
-      <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
+    <% end %>
+    <small>
+      <span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>
+    </small>
+  </p>
 
 </li>

@@ -12,6 +12,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    current_user.mark_as_read(@conversation)
   end
 
   def reply
