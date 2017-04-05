@@ -23,6 +23,7 @@ class User < ApplicationRecord
     end
   end
 
+  # No emails available in current system, left empty
   def mailboxer_email(object)
   end
 end

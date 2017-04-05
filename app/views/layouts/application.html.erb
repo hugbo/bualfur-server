@@ -20,7 +20,8 @@
                         <% end %>
                         <li><%= link_to 'Ný íbúð', '/properties/new' %></li>
                         <li><%= link_to 'Prófíll', controller: "profile", action: "show_profile", id: current_user.id %></li>
-                        <li><%= link_to 'Skilaboð' %></li>
+                        <li><%= link_to 'Samtöl', controller: "conversations", action: "index" %></li>
+                        <li><%= link_to 'Nýtt samtal', controller: "messages", action: "new" %></li>
                     </ul>
                   <% else %>
                     <ul class="nav navbar-nav">
