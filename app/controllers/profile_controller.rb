@@ -13,6 +13,12 @@ class ProfileController < ApplicationController
     end
   end
 
+
+  def show_profile_json
+    fbid = params[:id]
+    @user = User.where(:uid => fbid )[0]
+  end
+
   def edit_profile
     if current_user == nil
       redirect_to root_path, flash: {error: "You need to be logged in to do that!"}
