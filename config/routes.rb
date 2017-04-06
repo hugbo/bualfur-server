@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   get '/conversations', to: 'conversations#index'
 
+  post '/conversations/index_json'
+
   resources :messages, only: [:new, :create]
 
 end

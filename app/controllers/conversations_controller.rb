@@ -1,7 +1,9 @@
 class ConversationsController < ApplicationController
   # Mailboxer actions
-  before_action :get_mailbox
-  before_action :get_conversation, except: [:index]
+  before_action :get_mailbox, except: [:index_json]
+  before_action :get_conversation, except: [:index, :index_json]
+  # CSRF controls (may the gods have mercy on my soul)
+  skip_before_action :verify_authenticity_token, only: [:index_json]
 
   def index
     if current_user == nil
@@ -9,6 +11,13 @@ class ConversationsController < ApplicationController
     else
       @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
     end
+  end
+
+  def index_json
+    userid = params[:id]
+    user = User.where(:uid => userid)[0]
+    @conversations = user.mailbox.conversations(user)
+    puts @conversations[0].messages[0].inspect
   end
 
   def show
