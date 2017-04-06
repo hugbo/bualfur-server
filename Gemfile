@@ -34,6 +34,10 @@ gem 'paperclip'
 gem 'jquery-ui-rails'
 
 
+gem 'mailboxer'
+
+gem 'will_paginate'
+
 gem 'httparty'
 
 # Use Capistrano for deployment
