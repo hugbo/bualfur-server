@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   post 'properties/create_android'
 
+  get '/profile/json/:id', to: 'profile#show_profile_json'
+
   delete '/logout', to: 'sessions#destroy'
 
 end
